@@ -1,0 +1,6 @@
+﻿services:
+  fullstackdevtest:
+    image: fullstackdevtest
+    build:
+      context: .
+      dockerfile: FullStackDevTest/Dockerfile
