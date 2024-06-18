@@ -12,7 +12,7 @@ internal sealed class CreateProductCommandHandler(IProductRepository productRepo
         Product product = new Product(Guid.NewGuid(), request.Name);
         
         productRepository.AddAsync(product, cancellationToken);
-        
-        throw new NotImplementedException();
+
+        return Task.CompletedTask;
     }
 }

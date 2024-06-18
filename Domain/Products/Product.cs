@@ -7,7 +7,7 @@ namespace Domain.Products;
 /// </summary>
 public sealed class Product: Entity
 {
-    private readonly string _name;
+    public string Name { get; }
     
     /// <summary>
     /// Product constructor.
@@ -17,6 +17,6 @@ public sealed class Product: Entity
     public Product(Guid id, string name)
         : base(id)
     {
-        _name = name;
+        Name = name;
     }
 }
