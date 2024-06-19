@@ -13,5 +13,8 @@ internal sealed class ProductsConfiguration: IEntityTypeConfiguration<Product>
         builder.HasIndex(product => product.Code).IsUnique();
         builder.Property(product => product.Name).HasMaxLength(256).IsRequired();
         builder.Property(product => product.Code).HasMaxLength(512).IsRequired();
+        builder.Property(product => product.Description).HasMaxLength(1024);
+        builder.Property(product => product.Price).IsRequired();
+        builder.Property(product => product.Stock).IsRequired();
     }
 }

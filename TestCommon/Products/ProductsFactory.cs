@@ -1,21 +1,29 @@
 using Domain.Product;
 using TestCommon.TestsConstants;
 
-
 namespace TestCommon.Products;
 
+/// <summary>
+/// Factory for creating products.
+/// </summary>
 public static class ProductsFactory
 {
     public static Product CreateProduct(
         Guid? id = null,
         string name = Constants.Product.Text,
-        string code = Constants.Product.Code
+        string code = Constants.Product.Code,
+        string description = Constants.Product.Description,
+        double price = Constants.Product.Price,
+        int stock = Constants.Product.Stock
         )
     {
         return new Product(
             id ?? Constants.Product.Id,
             name,
-            code
+            code,
+            description,
+            price,
+            stock
             );
     }
 }

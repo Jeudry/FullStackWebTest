@@ -4,6 +4,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Products;
+using Triplex.Validations;
 
 namespace FullStackDevTest.Controllers;
 
@@ -23,6 +24,8 @@ public sealed class ProductsController(ISender sender): ControllerBase
     [HttpPost]
     public async Task<ActionResult> CreateProduct(AddProductRequest product)
     {
+        Arguments.NotNull(product, nameof(product));
+        
         CreateProductCommand command = new CreateProductCommand(product.Name, product.Code, product.Description, product.Price, product.Stock);
         
         await sender.Send(command);
