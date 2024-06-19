@@ -1,19 +1,19 @@
 using Application.Products.Create;
-using Domain.Products;
+using Domain.Product;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Products;
 
 namespace FullStackDevTest.Controllers;
 
 public sealed class ProductsController: ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult<Product>> CreateProduct(Product product, ISender sender)
+    public async Task<ActionResult> CreateProduct(AddProductRequest product, ISender sender)
     {
-        CreateProductCommand command = new CreateProductCommand(product.Name);
-
-
+        CreateProductCommand command = new CreateProductCommand(product.Name, product.Code);
+        
         await sender.Send(command);
         
         return Ok();

@@ -1,4 +1,4 @@
-using Domain.Products;
+using Domain.Product;
 
 namespace Application.Common.Interfaces;
 

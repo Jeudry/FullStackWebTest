@@ -7,7 +7,7 @@ namespace Application.Products.Create;
 /// Command to create a product.
 /// </summary>
 /// <param name="Name">name of the product</param>
-public record CreateProductCommand(string Name) : ICommand;
+public record CreateProductCommand(string Name, string Code) : ICommand;
 
 /// <summary>
 /// Request to create a product.

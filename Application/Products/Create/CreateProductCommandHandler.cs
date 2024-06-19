@@ -1,5 +1,5 @@
 using Application.Common.Interfaces;
-using Domain.Products;
+using Domain.Product;
 using MediatR;
 
 namespace Application.Products.Create;
@@ -9,7 +9,7 @@ internal sealed class CreateProductCommandHandler(IProductRepository productRepo
 {
     public Task Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
-        Product product = new Product(Guid.NewGuid(), request.Name);
+        Product product = new Product(Guid.NewGuid(), request.Name, request.Code);
         
         productRepository.AddAsync(product, cancellationToken);
 

@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 
 namespace FullStackDevTest;
@@ -16,7 +17,39 @@ public static class DependencyInjection
         services.AddSwagger();
         services.AddProblemDetails();
         services.AddOrigins(configuration);
+        services.AddControllersConfig();
 
+        return services;
+    }
+
+    [RequiresUnreferencedCode("Calls Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllers()")]
+    private static IServiceCollection AddControllersConfig(this IServiceCollection services)
+    {
+        services.AddControllers()
+            .AddJsonOptions(opt =>
+            {
+
+                opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
+        
+        services
+            .AddControllers()
+            .AddNewtonsoftJson(opts =>
+            {
+                opts.SerializerSettings.ReferenceLoopHandling = Newtonsoft
+                    .Json
+                    .ReferenceLoopHandling
+                    .Ignore;
+                opts.SerializerSettings.NullValueHandling = Newtonsoft
+                    .Json
+                    .NullValueHandling
+                    .Ignore;
+                opts.SerializerSettings.DateTimeZoneHandling = Newtonsoft
+                    .Json
+                    .DateTimeZoneHandling
+                    .Local;
+                opts.UseCamelCasing(false);
+            });
         return services;
     }
 

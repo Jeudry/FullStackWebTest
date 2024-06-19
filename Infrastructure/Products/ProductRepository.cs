@@ -1,5 +1,5 @@
 using Application.Common.Interfaces;
-using Domain.Products;
+using Domain.Product;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
