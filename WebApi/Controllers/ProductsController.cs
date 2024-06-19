@@ -7,6 +7,8 @@ using Presentation.Products;
 
 namespace FullStackDevTest.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public sealed class ProductsController: ControllerBase
 {
     [HttpPost]
