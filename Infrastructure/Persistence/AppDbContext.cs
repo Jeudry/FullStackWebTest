@@ -14,6 +14,11 @@ namespace Infrastructure.Persistence;
 public class AppDbContext(DbContextOptions options, IHttpContextAccessor _httpContextAccessor, IPublisher _publisher): DbContext(options)
 {
     /// <summary>
+    /// Represents the default schema of the database.
+    /// </summary>
+    public const string DefaultSchema = "AppDb";
+    
+    /// <summary>
     /// Represents the products table.
     /// </summary>
     public DbSet<Product> Products { get; set; } = null!;
@@ -31,7 +36,8 @@ public class AppDbContext(DbContextOptions options, IHttpContextAccessor _httpCo
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-        
+        modelBuilder.HasDefaultSchema(DefaultSchema);
+
         base.OnModelCreating(modelBuilder);
     }
 }
