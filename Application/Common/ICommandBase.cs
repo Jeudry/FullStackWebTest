@@ -2,7 +2,7 @@ using MediatR;
 
 namespace Application.Common;
 
-public interface ICommand : IRequest<ICommandBase> 
+public interface ICommand : IRequest, ICommandBase 
 {
     
 }

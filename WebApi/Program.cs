@@ -6,11 +6,8 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.AddPresentation().AddApplication().AddInfrastructure(builder.Configuration);
+    builder.Services.AddPresentation(builder.Configuration).AddApplication().AddInfrastructure(builder.Configuration);
 }
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Host.UseSerilog((context, configuration) =>
     configuration.ReadFrom.Configuration(context.Configuration));
@@ -24,7 +21,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
