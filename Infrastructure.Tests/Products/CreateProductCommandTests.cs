@@ -20,7 +20,7 @@ public class CreateProductCommandTests(WebAppFactory webAppFactory)
         
         var createProductCommand = ProductsCommandFactory.CreateProductCommand(product.Name, product.Code);
         
-        await _mediator.Send(createProductCommand);
+        await _mediator.Send(createProductCommand); 
         var result = await _mediator.Send(createProductCommand);
 
         result.IsError.Should().BeTrue();

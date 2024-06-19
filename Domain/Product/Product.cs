@@ -16,6 +16,21 @@ public sealed class Product: Entity
     /// Code of the product.
     /// </summary>
     public string Code { get; }
+    
+    /// <summary>
+    /// Price of the product.
+    /// </summary>
+    public double Price { get; }
+    
+    /// <summary>
+    /// Description of the product.
+    /// </summary>
+    public string Description { get; }
+    
+    /// <summary>
+    /// Stock of the product.
+    /// </summary>
+    public int Stock { get; }
 
     /// <summary>
     /// Product constructor.
@@ -23,10 +38,16 @@ public sealed class Product: Entity
     /// <param name="id">id of the product</param>
     /// <param name="name">name of the product</param>
     /// <param name="code">code of the product</param>
-    public Product(Guid id, string name, string code)
+    /// <param name="description">description of the product</param>
+    /// <param name="price">price of the product</param>
+    /// <param name="stock">product available quantity</param>
+    public Product(Guid id, string name, string code, string description, double price, int stock)
         : base(id)
     {
         Name = name;
         Code = code;
+        Description = description;
+        Price = price;
+        Stock = stock;
     }
 }

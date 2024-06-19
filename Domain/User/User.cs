@@ -5,15 +5,20 @@ namespace Domain.User;
 /// <summary>
 /// Represents the user entity.
 /// </summary>
-public sealed class User(string name) : IdentityUser
+public sealed class User(string name, string lastName) : IdentityUser
 {
     /// <summary>
-    /// Represents a username.
+    /// Represents first the name of the user.
     /// </summary>
     public string Name { get; } = name;
-    
+
     /// <summary>
-    /// Represents the first name of the user.
+    /// Represents the last name of the user.
     /// </summary>
-    public string LastName { get; set; }
+    public string LastName { get; set; } = lastName;
+
+    /// <summary>
+    /// Represents t
+    /// </summary>
+    public DateTime BirthDate { get; set; }
 }
