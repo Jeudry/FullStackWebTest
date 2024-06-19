@@ -50,4 +50,11 @@ public sealed class Product: Entity
         Price = price;
         Stock = stock;
     }
+    
+    public const int NameMaxLength = 256;
+    public const int NameMinLength = 3;
+    public const int CodeMaxLength = 512;
+    public const int CodeMinLength = 3;
+    public const int DescriptionMaxLength = 1024;
+    public const int DescriptionMinLength = 5;
 }
