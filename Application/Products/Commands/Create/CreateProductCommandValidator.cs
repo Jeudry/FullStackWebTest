@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Application.Common.Interfaces;
+using Application.Products.Commands.Create;
 using FluentValidation;
 
 namespace Application.Products.Create;
