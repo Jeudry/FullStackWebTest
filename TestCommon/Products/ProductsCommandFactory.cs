@@ -1,5 +1,4 @@
 using Application.Products.Commands.Create;
-using Application.Products.Create;
 using TestCommon.TestsConstants;
 
 namespace TestCommon.Products;

@@ -1,15 +1,13 @@
-using System.ComponentModel.DataAnnotations;
 using Application.Common.Interfaces;
-using Application.Products.Commands.Create;
 using FluentValidation;
 
-namespace Application.Products.Create;
+namespace Application.Products.Commands.Create;
 
 public sealed class CreateProductCommandValidator: AbstractValidator<CreateProductCommand>
 {
     public CreateProductCommandValidator(IProductRepository productRepository)
     {
-        RuleFor(x => x.Name).MustAsync(
-            async (name, _) => !(await productRepository.IsProductUniqueAsync(name, CancellationToken.None))).WithMessage("The email must be unique.");
+        RuleFor(x => x.Code).MustAsync(
+            async (code, _) => !await productRepository.IsProductUniqueAsync(code, CancellationToken.None)).WithMessage("The code must be unique.");
     }
 }

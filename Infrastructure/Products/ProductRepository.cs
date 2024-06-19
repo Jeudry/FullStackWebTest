@@ -12,9 +12,9 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
         throw new NotImplementedException();
     }
 
-    public async Task<bool> IsProductUniqueAsync(string name, CancellationToken cancellationToken)
+    public async Task<bool> IsProductUniqueAsync(string code, CancellationToken cancellationToken)
     {
-        return await context.Products.AnyAsync(p => p.Name == name, cancellationToken);
+        return await context.Products.AnyAsync(p => p.Code == code, cancellationToken);
     }
 
     public async Task AddAsync(Product product, CancellationToken cancellationToken)

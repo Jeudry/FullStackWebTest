@@ -1,5 +1,4 @@
 using Application.Products.Commands.Create;
-using Application.Products.Create;
 using Domain.Product;
 using FluentValidation;
 using MediatR;
