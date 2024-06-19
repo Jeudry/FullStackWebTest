@@ -9,6 +9,6 @@ public sealed class CreateProductCommandValidator: AbstractValidator<CreateProdu
     public CreateProductCommandValidator(IProductRepository productRepository)
     {
         RuleFor(x => x.Name).MustAsync(
-            async (name, _) => await productRepository.IsProductUniqueAsync(name, CancellationToken.None)).WithMessage("The email must be unique.");
+            async (name, _) => !(await productRepository.IsProductUniqueAsync(name, CancellationToken.None))).WithMessage("The email must be unique.");
     }
 }

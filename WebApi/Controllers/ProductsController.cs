@@ -9,10 +9,10 @@ namespace FullStackDevTest.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public sealed class ProductsController: ControllerBase
+public sealed class ProductsController(ISender sender): ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult> CreateProduct(AddProductRequest product, ISender sender)
+    public async Task<ActionResult> CreateProduct(AddProductRequest product)
     {
         CreateProductCommand command = new CreateProductCommand(product.Name, product.Code);
         
