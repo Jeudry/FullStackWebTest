@@ -1,3 +1,4 @@
+using Application.Common;
 using MediatR;
 
 namespace Application.Products.Create;
@@ -6,7 +7,7 @@ namespace Application.Products.Create;
 /// Command to create a product.
 /// </summary>
 /// <param name="Name">name of the product</param>
-public record CreateProductCommand(string Name) : IRequest;
+public record CreateProductCommand(string Name) : ICommand;
 
 /// <summary>
 /// Request to create a product.

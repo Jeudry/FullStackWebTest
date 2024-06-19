@@ -9,16 +9,10 @@ namespace FullStackDevTest.Controllers;
 public sealed class ProductsController: ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult<Product>> CreateProduct(Product product, ISender sender, IValidator<CreateProductCommand> validator)
+    public async Task<ActionResult<Product>> CreateProduct(Product product, ISender sender)
     {
         CreateProductCommand command = new CreateProductCommand(product.Name);
 
-        var result = await validator.ValidateAsync(command);
-        
-        if(!result.IsValid)
-        {
-            return BadRequest(result.Errors);
-        }
 
         await sender.Send(command);
         

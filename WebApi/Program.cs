@@ -1,5 +1,6 @@
 using Application;
 using FullStackDevTest;
+using FullStackDevTest.Middleware;
 using Infrastructure;
 using Serilog;
 
@@ -18,12 +19,13 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+    app.UseSwagger();   
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.Run();
