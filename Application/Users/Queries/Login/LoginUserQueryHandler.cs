@@ -23,7 +23,7 @@ internal sealed class LoginUserQueryHandler(IUserRepository userRepository, User
     {
         Arguments.NotNull(request, nameof(request));
         
-        User? user = await userRepository.GetByUserAsync(request.UserName);
+        User? user = await userRepository.GetByUserNameAsync(request.UserName);
         
         if (user == null) return Error.NotFound("User not found.");
         

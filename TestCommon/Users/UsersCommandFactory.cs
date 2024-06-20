@@ -1,5 +1,6 @@
 using Application.Users.Commands.Register;
 using Application.Users.Queries.Login;
+using Application.Users.Queries.Profile;
 using Application.Users.response;
 using Domain.User;
 using MediatR;
@@ -26,7 +27,8 @@ public sealed class UsersCommandFactory
             userName,
             email,
             password,
-            confirmPassword
+            confirmPassword,
+            id ?? Constants.User.Id
         );
     }
 
@@ -36,8 +38,20 @@ public sealed class UsersCommandFactory
     /// <param name="userEmail"> User email</param>
     /// <param name="password"> Invalid password</param>
     /// <returns> IRequest</returns>
-    public static LoginUserQuery GetLoginUserQuery(string userEmail, string password)
+    public static LoginUserQuery GetLoginUserQuery(
+        string userEmail = Constants.User.Email,
+        string password = Constants.User.Password
+        )
     {
         return new LoginUserQuery(userEmail, password);
+    }
+
+    /// <summary>
+    /// Get profile query
+    /// </summary>
+    /// <returns>Get Profile Query instance</returns>
+    public static GetProfileQuery GetGetProfileQuery(Guid? userId = null)
+    {
+        return new GetProfileQuery(userId ?? Guid.NewGuid());
     }
 }

@@ -16,7 +16,7 @@ internal sealed class RegisterUserCommandHandler(IUserRepository userRepository,
         
         User user = new User
         {
-            Id = Guid.NewGuid().ToString(),
+            Id = request.Id?.ToString() ?? Guid.NewGuid().ToString(),
             UserName = request.UserName,
             Email = request.Email,
             EmailConfirmed = true,

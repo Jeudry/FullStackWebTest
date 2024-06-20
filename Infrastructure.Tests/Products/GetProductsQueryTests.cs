@@ -1,3 +1,4 @@
+using Application.Products.Responses;
 using FluentAssertions;
 using Infrastructure.Tests.Common;
 using MediatR;
@@ -25,5 +26,6 @@ public class GetProductsQueryTests(WebAppFactory webAppFactory)
 
         getProductsResult.IsError.Should().BeFalse();
         getProductsResult.Value.Should().NotBeEmpty();
+        getProductsResult.Value.Should().AllBeOfType<ProductResponse>();
     }
 }

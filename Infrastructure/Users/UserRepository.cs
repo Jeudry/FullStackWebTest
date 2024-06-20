@@ -32,6 +32,18 @@ internal sealed class UserRepository(AppDbContext appDbContext): IUserRepository
     public async Task<bool> IsEmailUniqueAsync(string email, CancellationToken cancellationToken) => 
         !await appDbContext.Users.AnyAsync(user => user.Email == email, cancellationToken);
 
-    public Task<User?> GetByUserAsync(string requestUserName)
+    /// <summary>
+    /// see cref="IUserRepository.GetByUserNameAsync(string)"/>
+    /// </summary>
+    /// <param name="requestUserName"></param>
+    /// <returns></returns>
+    public Task<User?> GetByUserNameAsync(string requestUserName)
     => appDbContext.Users.FirstOrDefaultAsync(user => user.UserName == requestUserName);
+    
+    /// <summary>
+    /// Get user by id.
+    /// </summary>
+    /// <param name="id"> The user id. </param>
+    /// <returns></returns>
+    public Task<User?> GetByIdAsync(string id) => appDbContext.Users.FirstOrDefaultAsync(user => user.Id == id);
 }

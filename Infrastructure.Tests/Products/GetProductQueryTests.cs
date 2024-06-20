@@ -1,3 +1,4 @@
+using Application.Products.Responses;
 using ErrorOr;
 using FluentAssertions;
 using Infrastructure.Tests.Common;
@@ -29,6 +30,7 @@ public class GetProductQueryTests(WebAppFactory webAppFactory)
 
         getProductResult.IsError.Should().BeFalse();
         getProductResult.Value.Id.Should().Be(createProductCommand.Id!.Value);
+        getProductResult.Value.Should().BeOfType<ProductResponse>();
     }
     
     /// <summary>

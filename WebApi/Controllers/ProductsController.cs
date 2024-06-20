@@ -3,6 +3,7 @@ using Application.Products.Commands.Update;
 using Application.Products.Events.Delete;
 using Application.Products.Queries.GetProduct;
 using Application.Products.Queries.GetProducts;
+using Application.Products.Responses;
 using Domain.Product;
 using ErrorOr;
 using FluentValidation;
@@ -26,11 +27,11 @@ public sealed class ProductsController(ISender sender): ControllerBase
     /// </summary>
     /// <returns> returns a list of products </returns>
     [HttpGet]
-    public async Task<ActionResult<List<Product>>> GetProducts()
+    public async Task<ActionResult<List<ProductResponse>>> GetProducts()
     {
         GetProductsQuery query = new GetProductsQuery();
         
-        ErrorOr<List<Product>> result = await sender.Send(query);
+        ErrorOr<List<ProductResponse>> result = await sender.Send(query);
         
         if (result.IsError)
             return NotFound();
@@ -44,13 +45,13 @@ public sealed class ProductsController(ISender sender): ControllerBase
     /// <param name="productId">Identifier of the product</param>
     /// <returns></returns>
     [HttpGet("{productId:guid}")]
-    public async Task<ActionResult<Product>> GetProduct(Guid productId)
+    public async Task<ActionResult<ProductResponse>> GetProduct(Guid productId)
     {
         Arguments.NotEmpty(productId, nameof(productId));
         
         GetProductQuery query = new GetProductQuery(productId);
         
-        ErrorOr<Product> result = await sender.Send(query);
+        ErrorOr<ProductResponse> result = await sender.Send(query);
         
         if (result.IsError)
             return NotFound();

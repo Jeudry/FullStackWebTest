@@ -35,5 +35,12 @@ public interface IUserRepository
     /// </summary>
     /// <param name="requestUserName"> The username. </param>
     /// <returns> The user. </returns>
-    Task<User?> GetByUserAsync(string requestUserName);
+    Task<User?> GetByUserNameAsync(string requestUserName);
+    
+    /// <summary>
+    /// Gets the user by id asynchronously.
+    /// </summary>
+    /// <param name="id"> The user id. </param>
+    /// <returns></returns>
+    Task<User?> GetByIdAsync(string id);
 }
