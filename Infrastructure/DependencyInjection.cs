@@ -5,6 +5,7 @@ using Domain.User;
 using Infrastructure.Helpers;
 using Infrastructure.Persistence;
 using Infrastructure.Products;
+using Infrastructure.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -39,6 +40,7 @@ public static class DependencyInjection
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }
     

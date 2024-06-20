@@ -21,6 +21,10 @@ namespace FullStackDevTest.Controllers;
 [Route("api/[controller]")]
 public sealed class ProductsController(ISender sender): ControllerBase
 {
+    /// <summary>
+    /// Gets all products.
+    /// </summary>
+    /// <returns> returns a list of products </returns>
     [HttpGet]
     public async Task<ActionResult<List<Product>>> GetProducts()
     {
@@ -54,7 +58,6 @@ public sealed class ProductsController(ISender sender): ControllerBase
         return Ok(result.Value);
     }
 
-    
     /// <summary>
     /// Creates a new product.
     /// </summary>
@@ -94,7 +97,7 @@ public sealed class ProductsController(ISender sender): ControllerBase
     /// </summary>
     /// <param name="productId">Identifier of the product</param>
     /// <param name="product"> Updated product</param>
-    /// <returns> returns an action result</returns>
+    /// <returns> returns a product </returns>
     [HttpPut("{productId:guid}")]
     public async Task<ActionResult> UpdateProduct(Guid productId, UpdateProductRequest product)
     {
