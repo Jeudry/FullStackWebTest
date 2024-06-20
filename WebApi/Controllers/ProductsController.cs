@@ -20,7 +20,7 @@ namespace FullStackDevTest.Controllers;
 public sealed class ProductsController(ISender sender): ControllerBase
 {
     
-    [HttpGet]
+    [HttpGet("{productId:guid}")]
     public async Task<ActionResult<Product>> GetProduct(Guid productId)
     {
         Arguments.NotEmpty(productId, nameof(productId));
