@@ -34,4 +34,9 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
         context.Products.Remove(product);
         context.SaveChanges();
     }
+
+    public async Task<List<Product>> GetAllAsync(CancellationToken cancellationToken)
+    {
+        return await context.Products.ToListAsync(cancellationToken);
+    }
 }

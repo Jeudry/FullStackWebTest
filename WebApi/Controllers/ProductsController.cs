@@ -20,6 +20,11 @@ namespace FullStackDevTest.Controllers;
 public sealed class ProductsController(ISender sender): ControllerBase
 {
     
+    /// <summary>
+    /// Gets a product by its identifier.
+    /// </summary>
+    /// <param name="productId">Identifier of the product</param>
+    /// <returns></returns>
     [HttpGet("{productId:guid}")]
     public async Task<ActionResult<Product>> GetProduct(Guid productId)
     {

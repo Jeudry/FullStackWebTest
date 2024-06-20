@@ -37,4 +37,11 @@ public interface IProductRepository
     /// <param name="product">The product to delete.</param>
     /// <returns>The task result</returns>
     void DeleteAsync(Product product);
+
+    /// <summary>
+    /// Get all products.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<List<Product>> GetAllAsync(CancellationToken cancellationToken);
 }
