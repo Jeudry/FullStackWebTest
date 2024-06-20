@@ -1,4 +1,5 @@
 using Application.Products.Commands.Create;
+using Application.Products.Commands.Delete;
 using TestCommon.TestsConstants;
 
 namespace TestCommon.Products;
@@ -13,7 +14,8 @@ public sealed class ProductsCommandFactory
         string code = Constants.Product.Code,
         string description = Constants.Product.Description,
         double price = Constants.Product.Price,
-        int stock = Constants.Product.Stock
+        int stock = Constants.Product.Stock,
+        Guid? id = null
         )
     {
         return new CreateProductCommand
@@ -22,7 +24,17 @@ public sealed class ProductsCommandFactory
             code,
             description,
             price,
-            stock
+            stock,
+            id ?? Constants.Product.Id
         );
+    }
+    
+    public static DeleteProductCommand DeleteProductCommand(
+        Guid? productId = null
+        )
+    {
+        return new DeleteProductCommand(
+            productId ?? Constants.Product.Id
+            );
     }
 }

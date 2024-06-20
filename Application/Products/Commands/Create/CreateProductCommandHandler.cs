@@ -14,7 +14,7 @@ internal sealed class CreateProductCommandHandler(IProductRepository productRepo
     {
         Arguments.NotNull(request, nameof(request));
         
-        Product product = new Product(Guid.NewGuid(), request.Name, request.Code, request.Description, request.Price, request.Stock);
+        Product product = new Product(request.Id ?? Guid.NewGuid(), request.Name, request.Code, request.Description, request.Price, request.Stock);
         
         await productRepository.AddAsync(product, cancellationToken);
 

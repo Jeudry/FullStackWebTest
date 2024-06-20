@@ -7,12 +7,18 @@ namespace Infrastructure.Products;
 
 internal sealed class ProductRepository(AppDbContext context) : IProductRepository
 {
-    public Task<Product?> GetByIdAsync(Guid productId, CancellationToken cancellationToken)
+    /// <summary>
+    /// see <see cref="IProductRepository.GetByIdAsync"/>
+    /// </summary>
+    /// <param name="productId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<Product?> GetByIdAsync(Guid productId, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await context.Products.FindAsync(new object[] { productId }, cancellationToken);
     }
 
-    public async Task<bool> IsProductUniqueAsync(string code, CancellationToken cancellationToken)
+    public async Task<bool> IsProductCodeUniqueAsync(string code, CancellationToken cancellationToken)
     {
         return await context.Products.AnyAsync(p => p.Code == code, cancellationToken);
     }
@@ -21,5 +27,11 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     {
         await context.Products.AddAsync(product, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);
+    }
+
+    public void DeleteAsync(Product product)
+    {
+        context.Products.Remove(product);
+        context.SaveChanges();
     }
 }

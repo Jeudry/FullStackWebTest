@@ -12,7 +12,7 @@ public sealed class CreateProductCommandValidator: AbstractValidator<CreateProdu
     public CreateProductCommandValidator(IProductRepository productRepository)
     {
         RuleFor(x => x.Code).MustAsync(
-            async (code, _) => !await productRepository.IsProductUniqueAsync(code, CancellationToken.None)).WithMessage("The code must be unique.")
+            async (code, _) => !await productRepository.IsProductCodeUniqueAsync(code, CancellationToken.None)).WithMessage("The code must be unique.")
             .NotEmpty().WithMessage("The code cant be empty")
             .NotNull().WithMessage("The code cant be null");
             

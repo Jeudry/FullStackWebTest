@@ -1,4 +1,5 @@
 using Application.Products.Commands.Create;
+using Application.Products.Commands.Delete;
 using Domain.Product;
 using FluentValidation;
 using MediatR;
@@ -16,6 +17,14 @@ namespace FullStackDevTest.Controllers;
 [Route("api/[controller]")]
 public sealed class ProductsController(ISender sender): ControllerBase
 {
+    
+    [HttpGet]
+    public async Task<ActionResult<Product>> GetProduct(Guid productId)
+    {
+        return Ok();
+    }
+
+    
     /// <summary>
     /// Creates a new product.
     /// </summary>
@@ -33,9 +42,21 @@ public sealed class ProductsController(ISender sender): ControllerBase
         return Ok();
     }
     
-    [HttpGet]
-    public async Task<ActionResult<Product>> GetProduct(Guid productId)
+    /// <summary>
+    /// Deletes an existing product.
+    /// </summary>
+    /// <param name="productId">Identifier of the product</param>
+    /// <returns></returns>
+    [HttpDelete("{productId:guid}")]
+    public async Task<ActionResult> DeleteProduct(Guid productId)
     {
+        Arguments.NotEmpty(productId, nameof(productId));
+        
+        DeleteProductCommand command = new DeleteProductCommand(productId);
+        
+        await sender.Send(command);
+        
         return Ok();
-    }   
+    }
+
 }

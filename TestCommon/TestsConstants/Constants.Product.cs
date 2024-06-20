@@ -2,6 +2,7 @@ namespace TestCommon.TestsConstants;
 
 internal static class Constants
 {
+    
     public static class Product
     {
         public const string Text = "Chair";
