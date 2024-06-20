@@ -11,7 +11,7 @@ public sealed class User : IdentityUser
     public const string DefaultRole = "User";
     public const string AdminRole = "Admin";
     
-    public const int MaxPasswordLength = 100;
+    public const int MaxPasswordLength = 255;
     public const int MinPasswordLength = 8; 
     
     public const int MaxUsernameLength = 256;

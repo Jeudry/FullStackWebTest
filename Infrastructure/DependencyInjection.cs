@@ -109,10 +109,10 @@ public static class DependencyInjection
                 opts.Password.RequiredLength = User.MinPasswordLength;
                 opts.Password.RequireDigit = true;
                 opts.Password.RequiredUniqueChars = 0;
-                opts.Password.RequireLowercase = true;
-                opts.Password.RequireNonAlphanumeric = true;
-                opts.Password.RequireUppercase = true;
-                opts.SignIn.RequireConfirmedEmail = true;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireUppercase = false;
+                opts.SignIn.RequireConfirmedEmail = false;
                 opts.User.RequireUniqueEmail = true;
                 opts.Lockout.AllowedForNewUsers = true;
                 opts.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);

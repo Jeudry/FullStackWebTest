@@ -5,10 +5,15 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {RouterModule} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClient, HttpClientModule, provideHttpClient} from "@angular/common/http";
+import {provideHttpClient} from "@angular/common/http";
 import {JwtModule} from "@auth0/angular-jwt";
 import {routes} from "./app.routes";
 import {config} from "@env/config.dev"
+import {LoginComponent} from "@modules/login/login.component";
+import {RegisterComponent} from "@modules/register/register.component";
+import {ProductManagementComponent} from "@products/product-management/product-management.component";
+import {ProductsListComponent} from "@products/products-list/products-list.component";
+import {PublicModule} from "@public/public.module";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -16,11 +21,16 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProductManagementComponent,
+    ProductsListComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    PublicModule,
+    RouterModule.forRoot(routes),
     SweetAlert2Module,
     BrowserModule,
     BrowserAnimationsModule,
@@ -31,12 +41,12 @@ export function tokenGetter() {
         allowedDomains: [config.shortApiURL],
         disallowedRoutes: []
       }
-    }),
-    routes
+    })
   ],
   providers: [
     provideHttpClient()
   ],
+  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

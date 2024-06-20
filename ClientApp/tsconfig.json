@@ -3,28 +3,25 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@node/*": [
-        "node_modules/*"
-      ],
       "@products/*": [
-        "app/products/*"
+        "./src/app/products/*"
       ],
       "@core/*": [
-        "app/core/*"
+        "./src/app/core/*"
       ],
       "@modules/*": [
-        "app/modules/*"
+        "./src/app/modules/*"
       ],
       "@public/*": [
-        "app/public/*"
+        "./src/app/public/*"
       ],
       "@env/*": [
-        "env/*"
+        "./src/env/*"
       ],
       "@sass/*": [
-        "assets/sass/*"
+        "./src/assets/sass/*"
       ]
     },
     "outDir": "./dist/out-tsc",

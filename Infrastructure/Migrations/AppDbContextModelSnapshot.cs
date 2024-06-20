@@ -34,17 +34,45 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("nvarchar(512)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1024)
+                        .HasColumnType("nvarchar(1024)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Code")
                         .IsUnique();
 
                     b.ToTable("Products", "AppDb");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("dc043262-673a-491a-b811-446703743743"),
+                            Code = "PROD",
+                            CreatedAt = new DateTime(2024, 6, 20, 17, 35, 34, 176, DateTimeKind.Utc).AddTicks(20),
+                            Description = "Product description",
+                            Name = "Product",
+                            Price = 100.0,
+                            Stock = 10
+                        });
                 });
 
             modelBuilder.Entity("Domain.User.User", b =>
@@ -66,21 +94,11 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -120,6 +138,24 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", "AppDb");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "dc043262-673a-491a-b811-446703743743",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "07fd95fc-7916-4c0d-bc20-1ba60ece5920",
+                            Email = "admin@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                            NormalizedUserName = "ADMIN",
+                            PhoneNumber = "18497505944",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "55673a48-1a55-49c6-bd13-068861e13be5",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -147,6 +183,20 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", "AppDb");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "dc043262-673a-491a-b811-446703743744",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "dc043262-673a-491a-b811-446703743743",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

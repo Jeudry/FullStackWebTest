@@ -1,0 +1,30 @@
+@use './variables' as *
+
+@mixin flexbox($align: flex-start,  $justify: flex-start, $direction: row)
+  display: flex !important
+  flex-direction: $direction
+  justify-content: $justify
+  align-items: $align
+
+@mixin v-flex($align: center)
+  display: flex
+  align-items: $align
+
+@mixin h-flex($justify: center)
+  display: flex
+  justify-content: $justify
+
+@mixin text($weight: 400, $size: $text-base)
+  font-weight: $weight
+  font-size: $size
+  font-family: "Inter", sans-serif
+  letter-spacing: -0.2px
+
+@mixin text-overflow()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+@mixin border()
+  border: 1px solid $gray-200
+  border-radius: 6px

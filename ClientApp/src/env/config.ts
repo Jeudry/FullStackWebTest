@@ -3,4 +3,6 @@ export interface Config {
   clientURL: string;
   production: boolean;
   shortApiURL: string;
+  keyEncrypt: string;
+  encrypt: boolean;
 }

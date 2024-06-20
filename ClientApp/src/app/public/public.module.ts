@@ -1,14 +1,15 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {MaterialModule} from "./material/material.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RouterModule} from "@angular/router";
 import {AvatarModule} from "ngx-avatars";
-
+import {InputComponent} from "@public/components/input/input.component";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    InputComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -20,8 +21,10 @@ import {AvatarModule} from "ngx-avatars";
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    AvatarModule
+    AvatarModule,
+    InputComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PublicModule { }
+export class PublicModule {
+}
