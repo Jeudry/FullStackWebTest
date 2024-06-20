@@ -7,7 +7,6 @@ namespace FullStackDevTest;
 public static class DependencyInjection
 {
     private const string AllowOriginKey = "AllowOrigin";
-    private const string OriginsKey = "Origins";
     
     [RequiresUnreferencedCode("This method requires unreferenced code.")]
     public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration configuration)
@@ -16,7 +15,6 @@ public static class DependencyInjection
         services.AddEndpointsApiExplorer();
         services.AddSwagger();
         services.AddProblemDetails();
-        services.AddOrigins(configuration);
         services.AddControllersConfig();
 
         return services;
@@ -92,25 +90,6 @@ public static class DependencyInjection
                 new OpenApiSecurityRequirement { { securityScheme, Array.Empty<string>() } }
             );
         });
-        return services;
-    }
-    
-    private static IServiceCollection AddOrigins(this IServiceCollection services, IConfiguration configuration)
-    {
-        var origins = configuration.GetSection(OriginsKey).Get<string[]>()!;
-
-        services.AddCors(
-            c =>
-                c.AddPolicy(AllowOriginKey,
-                    builder =>
-                        builder
-                            .WithOrigins(origins)
-                            .AllowAnyMethod()
-                            .AllowAnyHeader()
-                            .AllowAnyMethod()
-                            .SetIsOriginAllowed(origin => true)
-                )
-        );
         return services;
     }
 }
