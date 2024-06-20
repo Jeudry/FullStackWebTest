@@ -1,3 +1,4 @@
+using Application.Common;
 using Application.Products.Commands.Create;
 using Application.Products.Commands.Update;
 using Application.Products.Events.Delete;
@@ -25,13 +26,18 @@ public sealed class ProductsController(ISender sender): ControllerBase
     /// <summary>
     /// Gets all products.
     /// </summary>
+    /// <param name="sortBy">Sort by field</param>
+    /// <param name="direction">Sort direction</param>
+    /// <param name="limit">Limit of products to return</param>
+    /// <param name="offset">Offset of products to return</param>
+    /// <param name="search">Search term to filter products</param>
     /// <returns> returns a list of products </returns>
     [HttpGet]
-    public async Task<ActionResult<List<ProductResponse>>> GetProducts()
+    public async Task<ActionResult<ListResponse<ProductResponse>>> GetProducts([FromQuery] string sortBy, [FromQuery] string direction, [FromQuery] int limit, [FromQuery] int offset, [FromQuery] string? search = null)
     {
-        GetProductsQuery query = new GetProductsQuery();
+        GetProductsQuery query = new GetProductsQuery(sortBy, direction, limit, offset, search);
         
-        ErrorOr<List<ProductResponse>> result = await sender.Send(query);
+        ErrorOr<ListResponse<ProductResponse>> result = await sender.Send(query);
         
         if (result.IsError)
             return NotFound();

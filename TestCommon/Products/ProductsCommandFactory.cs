@@ -74,9 +74,21 @@ public sealed class ProductsCommandFactory
     /// Create a new get products query.
     /// </summary>
     /// <returns> Gets products list query. </returns>
-    public static GetProductsQuery GetProductsQuery()
+    public static GetProductsQuery GetProductsQuery(
+            string sortBy = Constants.Product.SortBy,
+            string direction = Constants.Product.Direction,
+            int? limit = null,
+            int? offset = null,
+            string? search = null
+        )
     {
-        return new GetProductsQuery();
+        return new GetProductsQuery(
+            sortBy,
+            direction,
+            limit ?? Constants.Product.Limit,
+            offset ?? Constants.Product.Offset,
+            search
+            );
     }
     
     public static UpdateProductCommand UpdateProductCommand(

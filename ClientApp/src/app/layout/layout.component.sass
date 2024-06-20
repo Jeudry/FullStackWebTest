@@ -1,0 +1,27 @@
+.c-layout
+  display: grid
+  height: 100%
+
+  .c-layout__header
+    background-color: white
+    border-bottom: 1px solid #e9ecef
+    padding: 10px 20px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    position: fixed
+    height: 4rem
+    width: 100%
+
+    app-header
+      display: block
+      width: 100%
+
+  .c-layout__body
+    padding: 3rem
+
+    overflow: auto
+    height: 100%
+    max-height: calc(100vh - 4rem)
+    display: block
+    margin-top: 4rem

@@ -5,6 +5,8 @@ using Application.Users.Queries.Login;
 using Application.Users.Queries.Profile;
 using Application.Users.response;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Users;
@@ -64,7 +66,7 @@ public sealed class UsersController(
         {
             return BadRequest();
         }
-        return Ok(result);
+        return Ok(result.Value);
     }
     
     /// <summary>
@@ -72,7 +74,7 @@ public sealed class UsersController(
     /// </summary>
     /// <returns></returns>
     [HttpGet("get-current-profile")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> GetCurrentProfile()
     {
         string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -86,6 +88,6 @@ public sealed class UsersController(
         {
             return NotFound();
         }
-        return Ok(result);
+        return Ok(result.Value);
     }
 }

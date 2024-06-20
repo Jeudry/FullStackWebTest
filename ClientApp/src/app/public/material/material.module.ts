@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatPaginatorModule} from "@angular/material/paginator";
@@ -12,10 +12,14 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenav} from "@angular/material/sidenav";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [],
   imports: [
+    MatToolbarModule,
     CommonModule,
     MatTabsModule,
     MatRadioModule,
@@ -28,7 +32,9 @@ import {MatButtonModule} from "@angular/material/button";
     MatMenuModule,
     MatSidenav,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatSortModule
   ],
   exports: [
     MatTabsModule,
@@ -42,7 +48,11 @@ import {MatButtonModule} from "@angular/material/button";
     MatMenuModule,
     MatSidenav,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatSortModule
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {
+}

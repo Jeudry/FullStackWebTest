@@ -65,11 +65,33 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     /// <summary>
     /// see <see cref="IProductRepository.GetAllAsync"/>
     /// </summary>
+    /// <param name="sortBy"></param>
+    /// <param name="direction"></param>
+    /// <param name="search"></param>
     /// <param name="cancellationToken"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
     /// <returns></returns>
-    public async Task<List<Product>> GetAllAsync(CancellationToken cancellationToken)
-    => await context.Products.ToListAsync(cancellationToken);
-    
+    public async Task<List<Product>> GetAllAsync(string sortBy, string direction, int limit, int offset, string? search, CancellationToken cancellationToken)
+    {
+        var query = context.Products.AsQueryable();
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            query = query.Where(p => p.Name.Contains(search) || (p.Description != null && p.Description.Contains(search)));
+        }
+        query = sortBy switch
+        {
+            "name" => direction == "asc" ? query.OrderBy(p => p.Name) : query.OrderByDescending(p => p.Name),
+            "code" => direction == "asc" ? query.OrderBy(p => p.Code) : query.OrderByDescending(p => p.Code),
+            "price" => direction == "asc" ? query.OrderBy(p => p.Price) : query.OrderByDescending(p => p.Price),
+            "stock" => direction == "asc" ? query.OrderBy(p => p.Stock) : query.OrderByDescending(p => p.Stock),
+            "createdAt" => direction == "asc" ? query.OrderBy(p => p.CreatedAt) : query.OrderByDescending(p => p.CreatedAt),
+            "updatedAt" => direction == "asc" ? query.OrderBy(p => p.UpdatedAt) : query.OrderByDescending(p => p.UpdatedAt),
+            _ => query.OrderBy(p => p.CreatedAt)
+        };
+        return await query.Skip(offset).Take(limit).ToListAsync(cancellationToken);
+    }
+
     /// <summary>
     /// see <see cref="IProductRepository.UpdateAsync"/>
     /// </summary>
@@ -79,5 +101,15 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     {
         context.Products.Update(product);
         context.SaveChanges();
+    }
+
+    /// <summary>
+    /// see <see cref="IProductRepository.GetTotalCountAsync"/>
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public Task<int> GetTotalCountAsync(CancellationToken cancellationToken)
+    {
+        return context.Products.CountAsync(cancellationToken);
     }
 }

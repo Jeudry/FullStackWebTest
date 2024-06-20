@@ -4,11 +4,13 @@ import {MaterialModule} from "./material/material.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AvatarModule} from "ngx-avatars";
 import {InputComponent} from "@public/components/input/input.component";
+import {HeaderComponent} from "@public/components/header/header.component";
 
 
 @NgModule({
   declarations: [
-    InputComponent
+    InputComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import {InputComponent} from "@public/components/input/input.component";
     ReactiveFormsModule,
     FormsModule,
     AvatarModule,
-    InputComponent
+    InputComponent,
+    HeaderComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

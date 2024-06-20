@@ -4,6 +4,7 @@ import {AuthenticateService} from "@modules/services/authentication.service";
 import {LogingDto} from "@core/interfaces/logingDto";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
+import {LoginResponse} from "@core/interfaces/loginResponse";
 
 @Component({
   selector: 'app-login',
@@ -55,13 +56,16 @@ export class LoginComponent {
     }
 
     this.authService.login(loginDto).subscribe({
-      next: () => {
+      next: (res: LoginResponse) => {
         Swal.fire({
           title: 'Success',
           text: 'Login Success',
           icon: 'success'
         }).then(() => {
-
+          localStorage.setItem("token", res.token!);
+          localStorage.setItem('expiration', res.expiration!);
+          this.authService.sendAuthStateChangeNotification(res.isAuthSuccessful);
+          this.router.navigate(['home']);
         });
       },
       error: (err) => {

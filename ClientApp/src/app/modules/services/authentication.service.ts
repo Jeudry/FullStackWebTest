@@ -24,7 +24,7 @@ export class AuthenticateService {
   }
 
   getCurrentDetailUser(): Observable<UserResponse> {
-    return this.http.get<UserResponse>(`${this.apiUrl}get-current-user`);
+    return this.http.get<UserResponse>(`${this.apiUrl}get-current-profile`);
   }
 
   currentUser(): UserResponse {

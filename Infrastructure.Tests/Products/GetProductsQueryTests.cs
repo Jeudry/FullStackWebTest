@@ -25,7 +25,7 @@ public class GetProductsQueryTests(WebAppFactory webAppFactory)
         var getProductsResult = await _mediator.Send(getProductsCommand);
 
         getProductsResult.IsError.Should().BeFalse();
-        getProductsResult.Value.Should().NotBeEmpty();
-        getProductsResult.Value.Should().AllBeOfType<ProductResponse>();
+        getProductsResult.Value.Items.Should().NotBeEmpty();
+        getProductsResult.Value.Items.Should().AllBeOfType<ProductResponse>();
     }
 }

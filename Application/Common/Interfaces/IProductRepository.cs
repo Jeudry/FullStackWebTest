@@ -50,13 +50,25 @@ public interface IProductRepository
     /// <summary>
     /// Get all products.
     /// </summary>
+    /// <param name="sortBy"> The sort by field.</param>
+    /// <param name="direction"> The sort direction.</param>
+    /// <param name="limit"> The limit of products to return.</param>
+    /// <param name="offset"> The offset of products to return.</param>
+    /// <param name="search"> The search term to filter products.</param>
     /// <param name="cancellationToken"> Propagates notification that operations should be canceled.</param>
     /// <returns> The list of products.</returns>
-    Task<List<Product>> GetAllAsync(CancellationToken cancellationToken);
+    Task<List<Product>> GetAllAsync(string sortBy, string direction, int limit, int offset, string? search, CancellationToken cancellationToken);
 
     /// <summary>
     /// Update a product.
     /// </summary>
     /// <param name="product"> The product to update.</param>
     void UpdateAsync(Product product);
+
+    /// <summary>
+    /// Get the total count of products.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<int> GetTotalCountAsync(CancellationToken cancellationToken);
 }
