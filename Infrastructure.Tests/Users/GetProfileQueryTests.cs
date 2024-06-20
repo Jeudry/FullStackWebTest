@@ -36,7 +36,7 @@ public class GetProfileQueryTests(WebAppFactory webAppFactory)
         await _mediator.Send(registerUserCommand);
 
         var getProfileQuery = UsersCommandFactory.GetGetProfileQuery(
-            registerUserCommand.Id
+            registerUserCommand.Id.ToString()
             );
 
         var result = await _mediator.Send(getProfileQuery);

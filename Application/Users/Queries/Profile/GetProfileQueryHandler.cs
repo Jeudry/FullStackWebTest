@@ -15,7 +15,7 @@ internal sealed class GetProfileQueryHandler(IUserRepository userRepository)
     {
         Arguments.NotNull(request, nameof(request));
         
-        User? user = await userRepository.GetByIdAsync(request.UserId.ToString());
+        User? user = await userRepository.GetByIdAsync(request.UserId);
         
         if (user == null) return Error.NotFound("User not found.");
         

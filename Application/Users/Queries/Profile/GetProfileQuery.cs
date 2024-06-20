@@ -8,4 +8,4 @@ namespace Application.Users.Queries.Profile;
 /// Get user profile by user id.
 /// </summary>
 /// <param name="UserId"> User id. </param>
-public record GetProfileQuery(Guid UserId) : IRequest<ErrorOr<UserResponse>>;
+public record GetProfileQuery(string UserId) : IRequest<ErrorOr<UserResponse>>;

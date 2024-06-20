@@ -50,8 +50,8 @@ public sealed class UsersCommandFactory
     /// Get profile query
     /// </summary>
     /// <returns>Get Profile Query instance</returns>
-    public static GetProfileQuery GetGetProfileQuery(Guid? userId = null)
+    public static GetProfileQuery GetGetProfileQuery(string? userId = null)
     {
-        return new GetProfileQuery(userId ?? Guid.NewGuid());
+        return new GetProfileQuery(userId ?? Guid.NewGuid().ToString());
     }
 }
