@@ -106,7 +106,7 @@ public static class DependencyInjection
         services
             .AddIdentity<User, IdentityRole>(opts =>
             {
-                opts.Password.RequiredLength = 8;
+                opts.Password.RequiredLength = User.MinPasswordLength;
                 opts.Password.RequireDigit = true;
                 opts.Password.RequiredUniqueChars = 0;
                 opts.Password.RequireLowercase = true;

@@ -1,6 +1,6 @@
 using Application.Products.Commands.Create;
-using Application.Products.Commands.Delete;
 using Application.Products.Commands.Update;
+using Application.Products.Events.Delete;
 using Application.Products.Queries.GetProduct;
 using Application.Products.Queries.GetProducts;
 using Domain.Product;

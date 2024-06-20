@@ -1,11 +1,10 @@
 using Application.Common.Interfaces;
-using Application.Products.Commands.Create;
 using Domain.Product;
 using ErrorOr;
 using MediatR;
 using Triplex.Validations;
 
-namespace Application.Products.Commands.Delete;
+namespace Application.Products.Events.Delete;
 
 internal sealed class DeleteProductCommandHandler(IProductRepository productRepository):  IRequestHandler<DeleteProductEvent, ErrorOr<Success>>
 {

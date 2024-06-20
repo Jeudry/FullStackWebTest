@@ -1,6 +1,6 @@
 namespace TestCommon.TestsConstants;
 
-internal static class Constants
+internal static partial class Constants
 {
     
     public static class Product

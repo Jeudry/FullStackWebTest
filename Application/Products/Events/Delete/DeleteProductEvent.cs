@@ -1,7 +1,7 @@
 using ErrorOr;
 using MediatR;
 
-namespace Application.Products.Commands.Delete;
+namespace Application.Products.Events.Delete;
 
 /// <summary>
 /// Command to delete a product.

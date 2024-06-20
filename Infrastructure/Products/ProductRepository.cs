@@ -26,7 +26,7 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     /// <returns></returns>
     public async Task<bool> IsProductCodeUniqueAsync(string code, CancellationToken cancellationToken)
     {
-        return await context.Products.AnyAsync(p => p.Code == code, cancellationToken);
+        return !await context.Products.AnyAsync(p => p.Code == code, cancellationToken);
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     /// <returns></returns>
     public async Task<bool> IsProductCodeUniqueAsync(string code, Guid id, CancellationToken cancellationToken)
     {
-        return await context.Products.AnyAsync(p => p.Code == code && p.Id != id, cancellationToken);
+        return !await context.Products.AnyAsync(p => p.Code == code && p.Id != id, cancellationToken);
     }
 
     /// <summary>

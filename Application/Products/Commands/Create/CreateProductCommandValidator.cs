@@ -9,10 +9,14 @@ namespace Application.Products.Commands.Create;
 /// </summary>
 public sealed class CreateProductCommandValidator: AbstractValidator<CreateProductCommand>
 {
+    /// <summary>
+    /// Initializes a new instance of <see cref="CreateProductCommandValidator"/>.
+    /// </summary>
+    /// <param name="productRepository"> The product repository. </param>
     public CreateProductCommandValidator(IProductRepository productRepository)
     {
         RuleFor(x => x.Code).MustAsync(
-            async (code, _) => !await productRepository.IsProductCodeUniqueAsync(code, CancellationToken.None)).WithMessage("The code must be unique.")
+            async (code, _) => await productRepository.IsProductCodeUniqueAsync(code, CancellationToken.None)).WithMessage("The code must be unique.")
             .NotEmpty().WithMessage("The code cant be empty")
             .NotNull().WithMessage("The code cant be null");
             
