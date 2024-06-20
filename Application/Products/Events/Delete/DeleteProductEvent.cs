@@ -7,4 +7,4 @@ namespace Application.Products.Commands.Delete;
 /// Command to delete a product.
 /// </summary>
 /// <param name="ProductId">Identifier of the product to delete</param>
-public record DeleteProductCommand(Guid ProductId) : IRequest<ErrorOr<Success>>;
+public record DeleteProductEvent(Guid ProductId) : IRequest<ErrorOr<Success>>;

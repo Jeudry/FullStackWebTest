@@ -1,5 +1,6 @@
 using Application.Products.Commands.Create;
 using Application.Products.Commands.Delete;
+using Application.Products.Queries.GetProduct;
 using TestCommon.TestsConstants;
 
 namespace TestCommon.Products;
@@ -9,6 +10,16 @@ namespace TestCommon.Products;
 /// </summary>
 public sealed class ProductsCommandFactory
 {
+    /// <summary>
+    /// Create a new product command.
+    /// </summary>
+    /// <param name="name"> The name of the product. </param>
+    /// <param name="code"> The code of the product. </param>
+    /// <param name="description"> The description of the product. </param> 
+    /// <param name="price"> The price of the product. </param>
+    /// <param name="stock"> The stock of the product. </param>
+    /// <param name="id"> The id of the product. </param>
+    /// <returns></returns>
     public static CreateProductCommand CreateProductCommand(
         string name = Constants.Product.Text,
         string code = Constants.Product.Code,
@@ -29,11 +40,30 @@ public sealed class ProductsCommandFactory
         );
     }
     
-    public static DeleteProductCommand DeleteProductCommand(
+    /// <summary>
+    /// Create a new delete product command.
+    /// </summary>
+    /// <param name="productId"> The id of the product. </param>
+    /// <returns></returns>
+    public static DeleteProductEvent DeleteProductEvent(
         Guid? productId = null
         )
     {
-        return new DeleteProductCommand(
+        return new DeleteProductEvent(
+            productId ?? Constants.Product.Id
+            );
+    }
+    
+    /// <summary>
+    /// Create a new get product query.
+    /// </summary>
+    /// <param name="productId"> The id of the product. </param>
+    /// <returns></returns>
+    public static GetProductQuery GetProductQuery (
+        Guid? productId = null
+        )
+    {
+        return new GetProductQuery(
             productId ?? Constants.Product.Id
             );
     }

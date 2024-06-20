@@ -1,6 +1,8 @@
 using Application.Products.Commands.Create;
 using Application.Products.Commands.Delete;
+using Application.Products.Queries.GetProduct;
 using Domain.Product;
+using ErrorOr;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +23,15 @@ public sealed class ProductsController(ISender sender): ControllerBase
     [HttpGet]
     public async Task<ActionResult<Product>> GetProduct(Guid productId)
     {
+        Arguments.NotEmpty(productId, nameof(productId));
+        
+        GetProductQuery query = new GetProductQuery(productId);
+        
+        ErrorOr<Product> result = await sender.Send(query);
+        
+        if (result.IsError)
+            return NotFound();
+        
         return Ok();
     }
 
@@ -52,9 +63,9 @@ public sealed class ProductsController(ISender sender): ControllerBase
     {
         Arguments.NotEmpty(productId, nameof(productId));
         
-        DeleteProductCommand command = new DeleteProductCommand(productId);
+        DeleteProductEvent @event = new DeleteProductEvent(productId);
         
-        await sender.Send(command);
+        await sender.Send(@event);
         
         return Ok();
     }

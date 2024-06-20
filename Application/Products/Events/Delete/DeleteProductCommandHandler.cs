@@ -7,9 +7,9 @@ using Triplex.Validations;
 
 namespace Application.Products.Commands.Delete;
 
-internal sealed class DeleteProductCommandHandler(IProductRepository productRepository):  IRequestHandler<DeleteProductCommand, ErrorOr<Success>>
+internal sealed class DeleteProductCommandHandler(IProductRepository productRepository):  IRequestHandler<DeleteProductEvent, ErrorOr<Success>>
 {
-    public async Task<ErrorOr<Success>> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<Success>> Handle(DeleteProductEvent request, CancellationToken cancellationToken)
     {
         Arguments.NotNull(request, nameof(request));
         

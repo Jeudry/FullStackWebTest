@@ -7,11 +7,11 @@ using TestCommon.Products;
 namespace Infrastructure.Tests.Products;
 
 /// <summary>
-/// Test class for DeleteProductCommand
+/// Test class for DeleteProductEvent
 /// </summary>
 /// <param name="webAppFactory">WebAppFactory instance</param>
 [Collection(WebAppFactoryCollection.CollectionName)]
-public class DeleteProductCommandTests(WebAppFactory webAppFactory)
+public class DeleteProductEventTests(WebAppFactory webAppFactory)
 {
     private readonly IMediator _mediator = webAppFactory.CreateMediator();
 
@@ -20,13 +20,13 @@ public class DeleteProductCommandTests(WebAppFactory webAppFactory)
     /// Should return error when product not found
     /// </summary>
     [Fact]
-    public async Task DeleteProductCommand_Should_ReturnError_When_ProductNotFound()
+    public async Task DeleteProductEvent_Should_ReturnError_When_ProductNotFound()
     {
         var createProductCommand = ProductsCommandFactory.CreateProductCommand();
         
         await _mediator.Send(createProductCommand);
         
-        var deleteProductCommand = ProductsCommandFactory.DeleteProductCommand(Guid.NewGuid());
+        var deleteProductCommand = ProductsCommandFactory.DeleteProductEvent(Guid.NewGuid());
         
         var result = await _mediator.Send(deleteProductCommand);
 
@@ -38,13 +38,13 @@ public class DeleteProductCommandTests(WebAppFactory webAppFactory)
     /// Should delete product
     /// </summary>
     [Fact]
-    public async Task DeleteProductCommand_Should_Delete_Product()
+    public async Task DeleteProductEvent_Should_Delete_Product()
     {
         var createProductCommand = ProductsCommandFactory.CreateProductCommand(id:Guid.NewGuid());
         
         await _mediator.Send(createProductCommand);
         
-        var deleteProductCommand = ProductsCommandFactory.DeleteProductCommand(createProductCommand.Id);
+        var deleteProductCommand = ProductsCommandFactory.DeleteProductEvent(createProductCommand.Id);
         
         var result = await _mediator.Send(deleteProductCommand);
 
