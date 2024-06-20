@@ -11,9 +11,8 @@ internal sealed class ProductsConfiguration: IEntityTypeConfiguration<Product>
     {
         builder.HasKey(product => product.Id);
         builder.Property(product => product.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.HasIndex(product => product.Code).IsUnique();
+        builder.HasIndex(product => product.Name).IsUnique();
         builder.Property(product => product.Name).HasMaxLength(Product.NameMaxLength).IsRequired();
-        builder.Property(product => product.Code).HasMaxLength(Product.CodeMaxLength).IsRequired();
         builder.Property(product => product.Description).HasMaxLength(Product.DescriptionMaxLength);
         builder.Property(product => product.Price).IsRequired();
         builder.Property(product => product.Stock).IsRequired();
@@ -22,7 +21,6 @@ internal sealed class ProductsConfiguration: IEntityTypeConfiguration<Product>
             new Product(
                 Guid.Parse(ProductId),
                 "Product",
-                "PROD",
                 "Product description",
                 100,
                 10,

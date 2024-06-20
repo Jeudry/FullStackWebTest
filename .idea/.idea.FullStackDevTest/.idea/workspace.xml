@@ -9,52 +9,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92c7b8c5-a381-45ba-95d5-46ef8ab8c9cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Common/ListResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/ListResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/ProductsResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/layout/layout.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/layout/layout.component.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/layout/layout.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/layout/layout.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/public/interceptors/auth-interceptor.interceptor.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/public/interceptors/auth-interceptor.interceptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icon-email.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icon-logout.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icon-menu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icon-user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icons.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/components/_header.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FullStackDevTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullStackDevTest/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/ProductDto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icon-dots.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icon-edit.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/components/_management.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IProductRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Products/Queries/GetProducts/GetProductsQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Queries/GetProducts/GetProductsQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Create/CreateProductCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Create/CreateProductCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Create/CreateProductCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Create/CreateProductCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Create/CreateProductCommandValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Create/CreateProductCommandValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Queries/GetProduct/GetProductQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Queries/GetProduct/GetProductQueryHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Products/Queries/GetProducts/GetProductsQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Queries/GetProducts/GetProductsQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Products/Responses/ProductResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Responses/ProductResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/modules/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/modules/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/modules/services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/modules/services/authentication.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/modules/services/products.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/modules/services/products.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/products.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/material/material.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/material/material.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/public.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/public.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/assets/icons/icons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/assets/icons/icons.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/src/assets/sass/_main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/_main.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/styles.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure.Tests/Products/GetProductsQueryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.Tests/Products/GetProductsQueryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/DependencyInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/assets/sass/abstracts/_utilities.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/abstracts/_utilities.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/src/assets/sass/components/_header.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/components/_header.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Product/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Product/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.Tests/Products/CreateProductCommandTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.Tests/Products/CreateProductCommandTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure.Tests/Products/UpdateProductCommandTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure.Tests/Products/UpdateProductCommandTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Configuration/ProductsConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configuration/ProductsConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Products/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Products/ProductRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestCommon/Products/ProductsCommandFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestCommon/Products/ProductsCommandFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCommon/Products/ProductsFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestCommon/Products/ProductsFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestCommon/TestsConstants/Constants.Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TestCommon/TestsConstants/Constants.Product.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/ProductsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +214,7 @@
       <workItem from="1718793368426" duration="27474000" />
       <workItem from="1718831848588" duration="17537000" />
       <workItem from="1718880075101" duration="25027000" />
-      <workItem from="1718917394795" duration="1388000" />
+      <workItem from="1718917394795" duration="2797000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />

@@ -5,7 +5,6 @@ namespace Application.Products.Responses;
 /// </summary>
 /// <param name="Id"> Identifier of the product </param>
 /// <param name="Name"> Name of the product </param>
-/// <param name="Code"> Code of the product </param>
 /// <param name="Description"> Description of the product </param>
 /// <param name="Price"> Price of the product </param>
 /// <param name="Stock"> Stock of the product </param>
@@ -14,7 +13,6 @@ namespace Application.Products.Responses;
 public record ProductResponse(
     Guid Id,
     string Name,
-    string Code,
     string Description,
     double Price,
     int Stock,

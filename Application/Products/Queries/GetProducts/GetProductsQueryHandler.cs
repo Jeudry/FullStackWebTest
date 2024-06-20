@@ -24,7 +24,6 @@ internal sealed class GetProductsQueryHandler(IProductRepository productReposito
         List<ProductResponse> response = products.Select(product => new ProductResponse(
             product.Id,
             product.Name,
-            product.Code,
             product.Description,
             product.Price,
             product.Stock,

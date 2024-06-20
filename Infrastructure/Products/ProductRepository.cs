@@ -19,26 +19,26 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     }
 
     /// <summary>
-    /// see <see cref="IProductRepository.IsProductCodeUniqueAsync(string,System.Threading.CancellationToken)"/>
+    /// see <see cref="IProductRepository.IsProductNameUniqueAsync"/>
     /// </summary>
-    /// <param name="code"></param>
+    /// <param name="name"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<bool> IsProductCodeUniqueAsync(string code, CancellationToken cancellationToken)
+    public async Task<bool> IsProductNameUniqueAsync(string name, CancellationToken cancellationToken)
     {
-        return !await context.Products.AnyAsync(p => p.Code == code, cancellationToken);
+        return !await context.Products.AnyAsync(p => p.Name == name, cancellationToken);
     }
 
     /// <summary>
-    /// see <see cref="IProductRepository.IsProductCodeUniqueAsync(string,System.Guid,System.Threading.CancellationToken)"/>
+    /// see <see cref="IProductRepository.IsProductNameUniqueAsync(string,System.Guid,System.Threading.CancellationToken)"/>
     /// </summary>
-    /// <param name="code"></param>
+    /// <param name="name"></param>
     /// <param name="id"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<bool> IsProductCodeUniqueAsync(string code, Guid id, CancellationToken cancellationToken)
+    public async Task<bool> IsProductNameUniqueAsync(string name, Guid id, CancellationToken cancellationToken)
     {
-        return !await context.Products.AnyAsync(p => p.Code == code && p.Id != id, cancellationToken);
+        return !await context.Products.AnyAsync(p => p.Name == name && p.Id != id, cancellationToken);
     }
 
     /// <summary>
@@ -82,7 +82,6 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
         query = sortBy switch
         {
             "name" => direction == "asc" ? query.OrderBy(p => p.Name) : query.OrderByDescending(p => p.Name),
-            "code" => direction == "asc" ? query.OrderBy(p => p.Code) : query.OrderByDescending(p => p.Code),
             "price" => direction == "asc" ? query.OrderBy(p => p.Price) : query.OrderByDescending(p => p.Price),
             "stock" => direction == "asc" ? query.OrderBy(p => p.Stock) : query.OrderByDescending(p => p.Stock),
             "createdAt" => direction == "asc" ? query.OrderBy(p => p.CreatedAt) : query.OrderByDescending(p => p.CreatedAt),

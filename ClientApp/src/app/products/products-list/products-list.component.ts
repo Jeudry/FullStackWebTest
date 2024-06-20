@@ -19,6 +19,9 @@ import {ProductsResponse} from "@core/interfaces/ProductsResponse";
 import {ProductsService} from "@products/products.service";
 import {ListResponse} from "@core/interfaces/ListResponse";
 import Swal from "sweetalert2";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {ProductManagementComponent} from "@products/product-management/product-management.component";
 
 @Component({
   selector: 'app-products-list',
@@ -26,7 +29,7 @@ import Swal from "sweetalert2";
   styleUrl: './products-list.component.sass'
 })
 export class ProductsListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'description', 'price', 'stock', 'createdAt', 'updatedAt'];
+  displayedColumns: string[] = ['name', 'description', 'price', 'stock', 'createdAt', 'updatedAt', 'actions'];
   data$: Observable<ProductsResponse[]> = of([]);
   dataSet: ReplaySubject<ProductsResponse[]> = new ReplaySubject<ProductsResponse[]>();
 
@@ -39,8 +42,68 @@ export class ProductsListComponent implements AfterViewInit {
 
   constructor(
     private _httpClient: HttpClient,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private readonly router: Router,
+    private readonly dialog: MatDialog
   ) {
+  }
+
+  createProduct() {
+    const dialogRef = this.dialog.open(ProductManagementComponent, {
+      data: {id: undefined},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.productsService.createProduct(result).subscribe({
+          next: () => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Product created',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              this.search.next('');
+            });
+          }, error: (err) => {
+            console.error(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            }).then(() => {
+
+            });
+          }
+        });
+      }
+    });
+  }
+
+
+  deleteProduct(id: number) {
+    this.productsService.deleteProduct(id).subscribe({
+      next: () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Product deleted',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          this.search.next('');
+        });
+      },
+      error: (err) => {
+        console.error(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        }).then(() => {
+
+        });
+      }
+    });
   }
 
   applyFilter(target: any) {

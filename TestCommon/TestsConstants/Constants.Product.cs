@@ -6,7 +6,6 @@ internal static partial class Constants
     public static class Product
     {
         public const string Text = "Chair";
-        public const string Code = "CH-001";
         public const string Description = "A chair to sit";
         public const double Price = 100.0;
         public const int Stock = 10;

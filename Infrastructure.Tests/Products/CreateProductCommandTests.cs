@@ -18,16 +18,15 @@ public class CreateProductCommandTests(WebAppFactory webAppFactory)
     private readonly IMediator _mediator = webAppFactory.CreateMediator();
     
     /// <summary>
-    /// Product should return error when product code already exists
+    /// Product should return error when product name already exists
     /// </summary>
     [Fact]
-    public async Task CreateProductCommand_Should_ReturnError_WhenExisting_ProductCode()
+    public async Task CreateProductCommand_Should_ReturnError_WhenExisting_ProductName()
     {
         var product = ProductsFactory.CreateProduct();
         
         var createProductCommand = ProductsCommandFactory.CreateProductCommand(
-            product.Name, 
-            product.Code
+            product.Name
             );
         
         await _mediator.Send(createProductCommand); 

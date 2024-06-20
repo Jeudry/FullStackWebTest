@@ -11,12 +11,9 @@ public sealed class UpdateProductCommandValidator: AbstractValidator<UpdateProdu
 {
     public UpdateProductCommandValidator(IProductRepository productRepository)
     {
-        RuleFor(x => x.Code).MustAsync(
-                async (code, _) => await productRepository.IsProductCodeUniqueAsync(code, CancellationToken.None)).WithMessage("The code must be unique.")
-            .NotEmpty().WithMessage("The code cant be empty")
-            .NotNull().WithMessage("The code cant be null");
-            
         RuleFor(x => x.Name).NotEmpty().WithMessage("The name cant be empty")
+            .MustAsync(
+                async (name, _) => await productRepository.IsProductNameUniqueAsync(name, CancellationToken.None)).WithMessage("The name must be unique.")
             .NotNull().WithMessage("The name cant be null")
             .MinimumLength(Product.NameMinLength).WithMessage($"The name must have at least {Product.NameMinLength} characters")
             .MaximumLength(Product.NameMaxLength).WithMessage($"The name must have at most {Product.NameMaxLength} characters");

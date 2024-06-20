@@ -11,6 +11,10 @@ export const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
   },
 };
 
+export enum InputType {
+  Field = 'text',
+  TextArea = 'textarea',
+}
 
 @Component({
   selector: 'app-input',
@@ -24,6 +28,7 @@ export const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
   ]
 })
 export class InputComponent {
+  @Input() inputType: InputType = InputType.Field;
   @Input() type: string = '';
   @Input() placeholder: string = '';
   @Input() formControl: FormControl = new FormControl();
@@ -31,6 +36,7 @@ export class InputComponent {
   @Input() value: string = '';
   @Input() onInputEmit: boolean = false;
   @Output() onInput = new EventEmitter<string>();
+  protected readonly InputType = InputType;
 
   constructor(@Self() @Optional() public ngControl: NgControl) {
     if (this.ngControl) {
@@ -55,5 +61,4 @@ export class InputComponent {
   clear() {
     this.ngControl.control?.reset();
   }
-
 }

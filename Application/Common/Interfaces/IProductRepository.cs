@@ -18,19 +18,19 @@ public interface IProductRepository
     /// <summary>
     /// Check if a product code is unique.
     /// </summary> 
-    /// <param name="code"> The product code to check.</param>
+    /// <param name="name"> The product code to check.</param>
     /// <param name="cancellationToken"> Propagates notification that operations should be canceled.</param>
     /// <returns> Indicates if the product code is unique.</returns>
-    Task<bool> IsProductCodeUniqueAsync(string code, CancellationToken cancellationToken);
+    Task<bool> IsProductNameUniqueAsync(string name, CancellationToken cancellationToken);
     
     /// <summary>
     /// Check if a product code is unique.
     /// </summary>
-    /// <param name="code"> The product code to check.</param>
+    /// <param name="name"> The product name to check.</param>
     /// <param name="id"> The product id to exclude from the check.</param>
     /// <param name="cancellationToken"> Propagates notification that operations should be canceled.</param>
     /// <returns></returns>
-    Task<bool> IsProductCodeUniqueAsync(string code, Guid id, CancellationToken cancellationToken);
+    Task<bool> IsProductNameUniqueAsync(string name, Guid id, CancellationToken cancellationToken);
     
     /// <summary>
     /// Add a product to the repository.

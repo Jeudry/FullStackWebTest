@@ -2,7 +2,9 @@
   <div class="products__header">
     <div class="products__header__left">
       <h2>Products</h2>
-      <button color="primary" mat-raised-button routerLink="/products/create">Create Product</button>
+      <button (click)="createProduct()" color="primary" mat-raised-button routerLink="home/products-management">Create
+        Product
+      </button>
     </div>
     <div>
       <mat-form-field class="example-full-width">
@@ -56,6 +58,30 @@
           Updated At
         </th>
         <td *matCellDef="let row" mat-cell>{{ row.updatedAt | date }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef disableClear mat-header-cell>
+          Actions
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          <button [matMenuTriggerFor]="menu" [routerLink]="['home/products-management', row.id]" color="primary"
+                  mat-icon-button>
+            <span class="icon-dots"></span>
+          </button>
+          <mat-menu #menu="matMenu">
+            <div class="mat-menu">
+              <div class="mat-menu-item">
+                <span class="icon-edit"></span>
+                <span class="mat-menu__username"> Edit user</span>
+              </div>
+              <div class="mat-menu-item">
+                <span class="icon-user"></span>
+                <span class="mat-menu__email"> Delete user </span>
+              </div>
+            </div>
+          </mat-menu>
+        </td>
       </ng-container>
 
       <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>

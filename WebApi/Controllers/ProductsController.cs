@@ -75,7 +75,7 @@ public sealed class ProductsController(ISender sender): ControllerBase
     {
         Arguments.NotNull(product, nameof(product));
         
-        CreateProductCommand command = new CreateProductCommand(product.Name, product.Code,  product.Price, product.Stock, null, product.Description);
+        CreateProductCommand command = new CreateProductCommand(product.Name,  product.Price, product.Stock, null, product.Description);
         
         await sender.Send(command);
         
@@ -111,7 +111,7 @@ public sealed class ProductsController(ISender sender): ControllerBase
         Arguments.NotEmpty(productId, nameof(productId));
         Arguments.NotNull(product, nameof(product));
         
-        UpdateProductCommand command = new UpdateProductCommand(product.Id, product.Name, product.Code, product.Price, product.Stock, product.CreatedAt, product.Description, product.UpdatedAt);
+        UpdateProductCommand command = new UpdateProductCommand(product.Id, product.Name,  product.Price, product.Stock, product.CreatedAt, product.Description, product.UpdatedAt);
         
         await sender.Send(command);
         

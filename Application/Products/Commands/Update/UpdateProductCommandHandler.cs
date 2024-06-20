@@ -18,7 +18,7 @@ internal sealed class UpdateProductCommandHandler(IProductRepository productRepo
         if (existingProduct is null)
             return Error.NotFound(description: "Product not found");
         
-        existingProduct.Update(request.Name, request.Code, request.Price, request.Stock, request.CreatedAt, request.Description, request.UpdatedAt);
+        existingProduct.Update(request.Name, request.Price, request.Stock, request.CreatedAt, request.Description, request.UpdatedAt);
         
          productRepository.UpdateAsync(existingProduct);
 

@@ -11,8 +11,7 @@ public static class ProductsFactory
     public static Product CreateProduct(
         Guid? id = null,
         string name = Constants.Product.Text,
-        string code = Constants.Product.Code,
-        string description = Constants.Product.Description,
+        string? description = Constants.Product.Description,
         double price = Constants.Product.Price,
         int stock = Constants.Product.Stock,
         DateTime? createdAt = null,
@@ -22,7 +21,6 @@ public static class ProductsFactory
         return new Product(
             id ?? Constants.Product.Id,
             name,
-            code,
             description,
             price,
             stock,

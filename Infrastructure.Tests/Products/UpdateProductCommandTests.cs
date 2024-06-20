@@ -16,25 +16,29 @@ public class UpdateProductCommandTest(WebAppFactory webAppFactory)
     private readonly IMediator _mediator = webAppFactory.CreateMediator();
     
     /// <summary>
-    /// Product should return error when product code already exists
+    /// Product should return error when product name already exists
     /// </summary>
     [Fact]
-    public async Task UpdateProductCommand_Should_ReturnError_WhenExisting_ProductCode()
+    public async Task UpdateProductCommand_Should_ReturnError_WhenExisting_ProductName()
     {
-        var createProductCommand = ProductsCommandFactory.CreateProductCommand(id:Guid.NewGuid());
+        
+        var product = ProductsFactory.CreateProduct();
+
+        var createProductCommand = ProductsCommandFactory.CreateProductCommand(
+            name: product.Name,
+            id:Guid.NewGuid());
+        
         
         await _mediator.Send(createProductCommand); 
         
         var otherProduct = ProductsCommandFactory.CreateProductCommand(
-                code: "zxh-00",
                 id: Guid.NewGuid()
             );
         
         await _mediator.Send(otherProduct);
         
         var productUpdateCommand = ProductsCommandFactory.UpdateProductCommand(
-            "Update Product",
-            otherProduct.Code,
+            product.Name,
             createProductCommand.Price,
             createProductCommand.Stock,
             DateTime.Now,
@@ -61,7 +65,6 @@ public class UpdateProductCommandTest(WebAppFactory webAppFactory)
         
         var productUpdateCommand = ProductsCommandFactory.UpdateProductCommand(
             "Update Product",
-            "zxh-00",
             createProductCommand.Price,
             createProductCommand.Stock,
             DateTime.Now,

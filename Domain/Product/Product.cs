@@ -13,11 +13,6 @@ public sealed class Product: Entity
     public string Name { get; set; }
     
     /// <summary>
-    /// Code of the product.
-    /// </summary>
-    public string Code { get; set; }
-    
-    /// <summary>
     /// Price of the product.
     /// </summary>
     public double Price { get; set; }
@@ -47,17 +42,15 @@ public sealed class Product: Entity
     /// </summary>
     /// <param name="id">id of the product</param>
     /// <param name="name">name of the product</param>
-    /// <param name="code">code of the product</param>
     /// <param name="description">description of the product</param>
     /// <param name="price">price of the product</param>
     /// <param name="stock">product available quantity</param>
     /// <param name="createdAt">created at date</param>
     /// <param name="updatedAt">updated at date</param>
-    public Product(Guid id, string name, string code, string description, double price, int stock, DateTime createdAt, DateTime? updatedAt = null)
+    public Product(Guid id, string name, string? description, double price, int stock, DateTime createdAt, DateTime? updatedAt = null)
         : base(id)
     {
         Name = name;
-        Code = code;
         Description = description;
         Price = price;
         Stock = stock;
@@ -72,10 +65,9 @@ public sealed class Product: Entity
     public const int DescriptionMaxLength = 1024;
     public const int DescriptionMinLength = 5;
 
-    public void Update(string requestName, string requestCode, double requestPrice, int requestStock, DateTime requestCreatedAt, string? requestDescription, DateTime? requestUpdatedAt)
+    public void Update(string requestName, double requestPrice, int requestStock, DateTime requestCreatedAt, string? requestDescription, DateTime? requestUpdatedAt)
     {
         Name = requestName;
-        Code = requestCode;
         if(requestDescription != null)
             Description = requestDescription;
         Price = requestPrice;
