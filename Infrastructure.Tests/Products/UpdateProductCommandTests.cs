@@ -21,12 +21,13 @@ public class UpdateProductCommandTest(WebAppFactory webAppFactory)
     [Fact]
     public async Task UpdateProductCommand_Should_ReturnError_WhenExisting_ProductCode()
     {
-        var createProductCommand = ProductsCommandFactory.CreateProductCommand();
+        var createProductCommand = ProductsCommandFactory.CreateProductCommand(id:Guid.NewGuid());
         
         await _mediator.Send(createProductCommand); 
         
         var otherProduct = ProductsCommandFactory.CreateProductCommand(
-                code: "zxh-00"
+                code: "zxh-00",
+                id: Guid.NewGuid()
             );
         
         await _mediator.Send(otherProduct);
@@ -34,9 +35,11 @@ public class UpdateProductCommandTest(WebAppFactory webAppFactory)
         var productUpdateCommand = ProductsCommandFactory.UpdateProductCommand(
             "Update Product",
             otherProduct.Code,
-            createProductCommand.Description,
             createProductCommand.Price,
             createProductCommand.Stock,
+            DateTime.Now,
+            DateTime.Now,
+            createProductCommand.Description,
             createProductCommand.Id
             );
         
@@ -44,5 +47,31 @@ public class UpdateProductCommandTest(WebAppFactory webAppFactory)
 
         result.IsError.Should().BeTrue();
         result.FirstError.Type.Should().Be(ErrorType.Validation);
+    }
+    
+    /// <summary>
+    /// Should update product
+    /// </summary>
+    [Fact]
+    public async Task UpdateProductCommand_Should_Update_Product()
+    {
+        var createProductCommand = ProductsCommandFactory.CreateProductCommand(id:Guid.NewGuid());
+        
+        await _mediator.Send(createProductCommand);
+        
+        var productUpdateCommand = ProductsCommandFactory.UpdateProductCommand(
+            "Update Product",
+            "zxh-00",
+            createProductCommand.Price,
+            createProductCommand.Stock,
+            DateTime.Now,
+            DateTime.Now,
+            createProductCommand.Description,
+            createProductCommand.Id
+            );
+        
+        var result = await _mediator.Send(productUpdateCommand);
+
+        result.IsError.Should().BeFalse();
     }
 }

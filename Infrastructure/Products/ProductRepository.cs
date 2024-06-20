@@ -15,11 +15,11 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     /// <returns></returns>
     public async Task<Product?> GetByIdAsync(Guid productId, CancellationToken cancellationToken)
     {
-        return await context.Products.FindAsync(new object[] { productId }, cancellationToken);
+        return await context.Products.FirstOrDefaultAsync(product => product.Id == productId, cancellationToken);
     }
 
     /// <summary>
-    /// see <see cref="IProductRepository.IsProductCodeUniqueAsync"/>
+    /// see <see cref="IProductRepository.IsProductCodeUniqueAsync(string,System.Threading.CancellationToken)"/>
     /// </summary>
     /// <param name="code"></param>
     /// <param name="cancellationToken"></param>
@@ -29,6 +29,13 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
         return await context.Products.AnyAsync(p => p.Code == code, cancellationToken);
     }
 
+    /// <summary>
+    /// see <see cref="IProductRepository.IsProductCodeUniqueAsync(string,System.Guid,System.Threading.CancellationToken)"/>
+    /// </summary>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<bool> IsProductCodeUniqueAsync(string code, Guid id, CancellationToken cancellationToken)
     {
         return await context.Products.AnyAsync(p => p.Code == code && p.Id != id, cancellationToken);
@@ -67,11 +74,10 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
     /// see <see cref="IProductRepository.UpdateAsync"/>
     /// </summary>
     /// <param name="product"></param>
-    /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public Task UpdateAsync(Product product, CancellationToken cancellationToken)
+    public void UpdateAsync(Product product)
     {
         context.Products.Update(product);
-        return context.SaveChangesAsync(cancellationToken);
+        context.SaveChanges();
     }
 }

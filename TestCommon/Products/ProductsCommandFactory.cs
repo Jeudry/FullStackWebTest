@@ -1,5 +1,6 @@
 using Application.Products.Commands.Create;
 using Application.Products.Commands.Delete;
+using Application.Products.Commands.Update;
 using Application.Products.Queries.GetProduct;
 using Application.Products.Queries.GetProducts;
 using TestCommon.TestsConstants;
@@ -34,10 +35,10 @@ public sealed class ProductsCommandFactory
         (
             name,
             code,
-            description,
             price,
             stock,
-            id ?? Constants.Product.Id
+            id ?? Constants.Product.Id,
+            description
         );
     }
     
@@ -78,23 +79,27 @@ public sealed class ProductsCommandFactory
         return new GetProductsQuery();
     }
     
-    public static CreateProductCommand UpdateProductCommand(
+    public static UpdateProductCommand UpdateProductCommand(
         string name = Constants.Product.Text,
         string code = Constants.Product.Code,
-        string description = Constants.Product.Description,
         double price = Constants.Product.Price,
         int stock = Constants.Product.Stock,
+        DateTime? createdAt = null,
+        DateTime? updatedAt = null,
+        string? description = null,
         Guid? id = null
     )
     {
-        return new CreateProductCommand
+        return new UpdateProductCommand
         (
+            id ?? Constants.Product.Id,
             name,
             code,
-            description,
             price,
             stock,
-            id ?? Constants.Product.Id
+            createdAt ?? Constants.Product.CreatedAt,
+            description ?? Constants.Product.Description,
+            updatedAt
         );
     }
 }

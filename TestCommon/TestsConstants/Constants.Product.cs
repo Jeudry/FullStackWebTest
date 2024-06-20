@@ -11,5 +11,7 @@ internal static class Constants
         public const double Price = 100.0;
         public const int Stock = 10;
         public static readonly Guid Id = Guid.NewGuid();
+        public static readonly DateTime CreatedAt = DateTime.UtcNow;
+        public static readonly DateTime? UpdatedAt = DateTime.UtcNow;
     }
 }

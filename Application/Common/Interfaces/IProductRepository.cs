@@ -58,7 +58,5 @@ public interface IProductRepository
     /// Update a product.
     /// </summary>
     /// <param name="product"> The product to update.</param>
-    /// <param name="cancellationToken"> Propagates notification that operations should be canceled.</param>
-    /// <returns> The task result</returns>
-    Task UpdateAsync(Product product, CancellationToken cancellationToken);
+    void UpdateAsync(Product product);
 }

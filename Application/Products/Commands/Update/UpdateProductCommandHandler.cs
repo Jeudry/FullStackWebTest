@@ -13,9 +13,14 @@ internal sealed class UpdateProductCommandHandler(IProductRepository productRepo
     {
         Arguments.NotNull(request, nameof(request));
         
-        Product product = new Product(request.Id ?? Guid.NewGuid(), request.Name, request.Code, request.Description, request.Price, request.Stock);
+        Product? existingProduct = await productRepository.GetByIdAsync(request.Id, cancellationToken);
         
-        await productRepository.UpdateAsync(product, cancellationToken);
+        if (existingProduct is null)
+            return Error.NotFound(description: "Product not found");
+        
+        existingProduct.Update(request.Name, request.Code, request.Price, request.Stock, request.CreatedAt, request.Description, request.UpdatedAt);
+        
+         productRepository.UpdateAsync(existingProduct);
 
         return new Success();
     }

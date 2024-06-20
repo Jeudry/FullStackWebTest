@@ -14,7 +14,9 @@ public static class ProductsFactory
         string code = Constants.Product.Code,
         string description = Constants.Product.Description,
         double price = Constants.Product.Price,
-        int stock = Constants.Product.Stock
+        int stock = Constants.Product.Stock,
+        DateTime? createdAt = null,
+        DateTime? updatedAt = null
         )
     {
         return new Product(
@@ -23,7 +25,9 @@ public static class ProductsFactory
             code,
             description,
             price,
-            stock
+            stock,
+            createdAt ?? Constants.Product.CreatedAt,
+            updatedAt
             );
     }
 }

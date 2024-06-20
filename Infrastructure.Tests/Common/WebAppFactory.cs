@@ -43,7 +43,8 @@ public class WebAppFactory: WebApplicationFactory<IAssemblyMarker>, IAsyncLifeti
         {
             services
                 .RemoveAll<DbContextOptions<AppDbContext>>()
-                .AddDbContext<AppDbContext>((sp, options) => options.UseInMemoryDatabase(TestDatabase.Connection.ConnectionString));
+                .AddDbContext<AppDbContext>((sp, options) => options.UseInMemoryDatabase(TestDatabase.Connection.ConnectionString))
+                .AddScoped<DbContext, AppDbContext>();
         });
     }
 }
