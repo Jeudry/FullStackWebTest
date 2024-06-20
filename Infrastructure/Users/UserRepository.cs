@@ -1,4 +1,5 @@
 using Application.Common.Interfaces;
+using Domain.User;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,4 +31,7 @@ internal sealed class UserRepository(AppDbContext appDbContext): IUserRepository
     /// <returns></returns>
     public async Task<bool> IsEmailUniqueAsync(string email, CancellationToken cancellationToken) => 
         !await appDbContext.Users.AnyAsync(user => user.Email == email, cancellationToken);
+
+    public Task<User?> GetByUserAsync(string requestUserName)
+    => appDbContext.Users.FirstOrDefaultAsync(user => user.UserName == requestUserName);
 }

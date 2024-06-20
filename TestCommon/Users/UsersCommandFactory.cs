@@ -1,4 +1,8 @@
 using Application.Users.Commands.Register;
+using Application.Users.Queries.Login;
+using Application.Users.response;
+using Domain.User;
+using MediatR;
 using TestCommon.TestsConstants;
 
 namespace TestCommon.Users;
@@ -24,5 +28,16 @@ public sealed class UsersCommandFactory
             password,
             confirmPassword
         );
+    }
+
+    /// <summary>
+    /// Login user query
+    /// </summary>
+    /// <param name="userEmail"> User email</param>
+    /// <param name="password"> Invalid password</param>
+    /// <returns> IRequest</returns>
+    public static LoginUserQuery GetLoginUserQuery(string userEmail, string password)
+    {
+        return new LoginUserQuery(userEmail, password);
     }
 }

@@ -29,4 +29,11 @@ public interface IUserRepository
     /// <param name="cancellationToken"> The request cancellation token. </param>
     /// <returns> If the email is unique. </returns>
     Task<bool> IsEmailUniqueAsync(string email, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Gets the user by username asynchronously.
+    /// </summary>
+    /// <param name="requestUserName"> The username. </param>
+    /// <returns> The user. </returns>
+    Task<User?> GetByUserAsync(string requestUserName);
 }

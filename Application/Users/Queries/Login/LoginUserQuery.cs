@@ -1,6 +1,7 @@
+using Application.Users.response;
+using ErrorOr;
+using MediatR;
+
 namespace Application.Users.Queries.Login;
 
-public class LoginUserQuery
-{
-    
-}
+public record LoginUserQuery(string UserName, string Password) : IRequest<ErrorOr<LoginResponse>>;
