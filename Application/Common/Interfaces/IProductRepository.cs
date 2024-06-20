@@ -24,6 +24,15 @@ public interface IProductRepository
     Task<bool> IsProductCodeUniqueAsync(string code, CancellationToken cancellationToken);
     
     /// <summary>
+    /// Check if a product code is unique.
+    /// </summary>
+    /// <param name="code"> The product code to check.</param>
+    /// <param name="id"> The product id to exclude from the check.</param>
+    /// <param name="cancellationToken"> Propagates notification that operations should be canceled.</param>
+    /// <returns></returns>
+    Task<bool> IsProductCodeUniqueAsync(string code, Guid id, CancellationToken cancellationToken);
+    
+    /// <summary>
     /// Add a product to the repository.
     /// </summary>
     /// <param name="product"> The product to add.</param>
@@ -41,7 +50,15 @@ public interface IProductRepository
     /// <summary>
     /// Get all products.
     /// </summary>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
+    /// <param name="cancellationToken"> Propagates notification that operations should be canceled.</param>
+    /// <returns> The list of products.</returns>
     Task<List<Product>> GetAllAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Update a product.
+    /// </summary>
+    /// <param name="product"> The product to update.</param>
+    /// <param name="cancellationToken"> Propagates notification that operations should be canceled.</param>
+    /// <returns> The task result</returns>
+    Task UpdateAsync(Product product, CancellationToken cancellationToken);
 }

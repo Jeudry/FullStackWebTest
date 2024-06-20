@@ -1,6 +1,8 @@
 using Application.Products.Commands.Create;
 using Application.Products.Commands.Delete;
+using Application.Products.Commands.Update;
 using Application.Products.Queries.GetProduct;
+using Application.Products.Queries.GetProducts;
 using Domain.Product;
 using ErrorOr;
 using FluentValidation;
@@ -19,6 +21,18 @@ namespace FullStackDevTest.Controllers;
 [Route("api/[controller]")]
 public sealed class ProductsController(ISender sender): ControllerBase
 {
+    [HttpGet]
+    public async Task<ActionResult<List<Product>>> GetProducts()
+    {
+        GetProductsQuery query = new GetProductsQuery();
+        
+        ErrorOr<List<Product>> result = await sender.Send(query);
+        
+        if (result.IsError)
+            return NotFound();
+        
+        return Ok(result.Value);
+    }
     
     /// <summary>
     /// Gets a product by its identifier.
@@ -37,7 +51,7 @@ public sealed class ProductsController(ISender sender): ControllerBase
         if (result.IsError)
             return NotFound();
         
-        return Ok();
+        return Ok(result.Value);
     }
 
     
@@ -74,5 +88,23 @@ public sealed class ProductsController(ISender sender): ControllerBase
         
         return Ok();
     }
-
+    
+    /// <summary>
+    /// Updates an existing product.
+    /// </summary>
+    /// <param name="productId">Identifier of the product</param>
+    /// <param name="product"> Updated product</param>
+    /// <returns> returns an action result</returns>
+    [HttpPut("{productId:guid}")]
+    public async Task<ActionResult> UpdateProduct(Guid productId, UpdateProductRequest product)
+    {
+        Arguments.NotEmpty(productId, nameof(productId));
+        Arguments.NotNull(product, nameof(product));
+        
+        UpdateProductCommand command = new UpdateProductCommand(product.Name, product.Code, product.Description, product.Price, product.Stock, product.Id);
+        
+        await sender.Send(command);
+        
+        return Ok();
+    }
 }

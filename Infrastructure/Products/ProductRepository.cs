@@ -18,25 +18,60 @@ internal sealed class ProductRepository(AppDbContext context) : IProductReposito
         return await context.Products.FindAsync(new object[] { productId }, cancellationToken);
     }
 
+    /// <summary>
+    /// see <see cref="IProductRepository.IsProductCodeUniqueAsync"/>
+    /// </summary>
+    /// <param name="code"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<bool> IsProductCodeUniqueAsync(string code, CancellationToken cancellationToken)
     {
         return await context.Products.AnyAsync(p => p.Code == code, cancellationToken);
     }
 
+    public async Task<bool> IsProductCodeUniqueAsync(string code, Guid id, CancellationToken cancellationToken)
+    {
+        return await context.Products.AnyAsync(p => p.Code == code && p.Id != id, cancellationToken);
+    }
+
+    /// <summary>
+    /// see <see cref="IProductRepository.AddAsync"/>
+    /// </summary>
+    /// <param name="product"></param>
+    /// <param name="cancellationToken"></param>
     public async Task AddAsync(Product product, CancellationToken cancellationToken)
     {
         await context.Products.AddAsync(product, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);
     }
 
+    /// <summary>
+    /// see <see cref="IProductRepository.DeleteAsync"/>
+    /// </summary>
+    /// <param name="product"></param>
     public void DeleteAsync(Product product)
     {
         context.Products.Remove(product);
         context.SaveChanges();
     }
 
+    /// <summary>
+    /// see <see cref="IProductRepository.GetAllAsync"/>
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<List<Product>> GetAllAsync(CancellationToken cancellationToken)
+    => await context.Products.ToListAsync(cancellationToken);
+    
+    /// <summary>
+    /// see <see cref="IProductRepository.UpdateAsync"/>
+    /// </summary>
+    /// <param name="product"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public Task UpdateAsync(Product product, CancellationToken cancellationToken)
     {
-        return await context.Products.ToListAsync(cancellationToken);
+        context.Products.Update(product);
+        return context.SaveChangesAsync(cancellationToken);
     }
 }

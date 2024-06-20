@@ -77,4 +77,24 @@ public sealed class ProductsCommandFactory
     {
         return new GetProductsQuery();
     }
+    
+    public static CreateProductCommand UpdateProductCommand(
+        string name = Constants.Product.Text,
+        string code = Constants.Product.Code,
+        string description = Constants.Product.Description,
+        double price = Constants.Product.Price,
+        int stock = Constants.Product.Stock,
+        Guid? id = null
+    )
+    {
+        return new CreateProductCommand
+        (
+            name,
+            code,
+            description,
+            price,
+            stock,
+            id ?? Constants.Product.Id
+        );
+    }
 }
