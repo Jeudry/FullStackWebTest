@@ -46,7 +46,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:5070'],
+        allowedDomains: ['webapi.fullstackdevtest.orb.local'],
         disallowedRoutes: []
       }
     })

@@ -51,18 +51,7 @@ public sealed class AppDbContext: IdentityDbContext<User>
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         modelBuilder.HasDefaultSchema(DefaultSchema);
         modelBuilder.Entity<User>().ToTable("Users");
-        modelBuilder.Entity<IdentityUserRole<string>>(entity =>
-        {
-            entity.ToTable("UserRoles");
-            entity.HasKey(e => new { e.UserId, e.RoleId });
-            entity.HasData(
-                new IdentityUserRole<string>
-                {
-                    RoleId = "dc043262-673a-491a-b811-446703743743",
-                    UserId = "dc043262-673a-491a-b811-446703743743"
-                }
-            );
-        });
+        
 
         base.OnModelCreating(modelBuilder);
     }

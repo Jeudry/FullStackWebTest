@@ -1,9 +1,9 @@
 import {Config} from "./config";
 
 export const config: Config = {
-  apiURL: 'https://localhost:5070/api/',
+  apiURL: 'https://webapi.fullstackdevtest.orb.local/api/',
   clientURL: 'http://localhost:4200/',
-  shortApiURL: 'localhost:5070',
+  shortApiURL: 'webapi.fullstackdevtest.orb.local',
   production: true,
   encrypt: true,
   keyEncrypt: 'Logidev@ñ'

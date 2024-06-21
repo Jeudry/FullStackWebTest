@@ -11,12 +11,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
       <ProjectReference Include="..\Presentation\Presentation.csproj" />
@@ -35,6 +29,12 @@
       <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.1" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
       <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
     <PropertyGroup>

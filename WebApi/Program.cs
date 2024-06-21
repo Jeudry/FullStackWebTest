@@ -3,6 +3,8 @@ using FullStackDevTest;
 using FullStackDevTest.extensions;
 using FullStackDevTest.Middleware;
 using Infrastructure;
+using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 const string OriginsKey = "Origins";
@@ -46,6 +48,9 @@ app.UseAuthorization();
 app.UseHttpsRedirection();
 app.UseErrorHandlingMiddleWare();
 app.UseEndpoints(endpoints => endpoints.MapControllers());
+using var serviceScope = app.Services.CreateScope();
+using var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+context.Database.Migrate();
 
 
 app.Run();

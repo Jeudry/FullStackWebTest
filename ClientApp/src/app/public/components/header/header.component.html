@@ -3,7 +3,7 @@
     <span class="icon-menu"></span>
   </button>
   <span [routerLinkActive]="'active'" [routerLink]="'/home/products'" class="header-title">Products</span>
-  @if (user && user.roles[0]?.name === 'Admin') {
+  @if (user && user.roles[0].name === 'Admin') {
     <span [routerLinkActive]="'active'" [routerLink]="'/home/users'" class="header-title">Users</span>
   }
   <span class="example-spacer"></span>

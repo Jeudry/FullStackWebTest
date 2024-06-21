@@ -348,3 +348,61 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+UPDATE [AppDb].[AspNetUsers] SET [ConcurrencyStamp] = N'66f396db-fcf3-4001-99e4-2f608b5bc27b', [PasswordHash] = N'AQAAAAIAAYagAAAAELniJoL4XB9zJP3Lw3nPrcbnpJATDgi3ednHR/XA6X5y8H/+VFxG8fqm/SuFobK3dg==', [SecurityStamp] = N'00c53988-e683-4881-8246-712ed05e49d6'
+WHERE [Id] = N'dc043262-673a-491a-b811-446703743743';
+SELECT @@ROWCOUNT;
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'AccessFailedCount', N'ConcurrencyStamp', N'Email', N'EmailConfirmed', N'LockoutEnabled', N'LockoutEnd', N'NormalizedEmail', N'NormalizedUserName', N'PasswordHash', N'PhoneNumber', N'PhoneNumberConfirmed', N'SecurityStamp', N'TwoFactorEnabled', N'UserName') AND [object_id] = OBJECT_ID(N'[AppDb].[AspNetUsers]'))
+    SET IDENTITY_INSERT [AppDb].[AspNetUsers] ON;
+INSERT INTO [AppDb].[AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (N'dc043262-673a-491a-b811-446703743744', 0, N'b4627c97-6463-4653-8a2f-e566d721cd73', N'user@example.com', CAST(1 AS bit), CAST(0 AS bit), NULL, N'USER@EXAMPLE.COM', N'USER', N'AQAAAAIAAYagAAAAEK7f7ykX61lD01YigVD9Z5ijhdjYXowqM9kmOn8kmlPbDa/2eTQtATN/Td310DrVfQ==', N'18497505945', CAST(1 AS bit), N'11830716-3b3e-4714-91e1-be31bd5aea39', CAST(0 AS bit), N'User'),
+(N'dc043262-673a-491a-b811-446703743745', 0, N'fdea4919-ce4a-4e54-8078-1d03076d9a8f', N'admin2@example.com', CAST(1 AS bit), CAST(0 AS bit), NULL, N'ADMIN@EXAMPLE.COM', N'ADMIN2', N'AQAAAAIAAYagAAAAEOP3lZM5Pw8NG5WjNcM6EllaviC0JH8oEDwqJZgosEKobDpPEUHznYtALMrIShYfdw==', N'18497505936', CAST(1 AS bit), N'7b50bc0a-1b4c-4584-8ef9-30c953d955fa', CAST(0 AS bit), N'Admin2'),
+(N'dc043262-673a-491a-b811-446703743746', 0, N'ec09ead2-4799-404e-a89b-3695435cf25b', N'user2@example.com', CAST(1 AS bit), CAST(0 AS bit), NULL, N'USER@EXAMPLE.COM', N'USER2', N'AQAAAAIAAYagAAAAEOjhE85YpTpXiDEfh+TB2FrT86lPFh+IbHt67G3HUPCqNgT1vcyi8B+e41tWfG6Gpg==', N'18497505937', CAST(1 AS bit), N'042101a4-9b35-479d-bcc3-5fc45147266e', CAST(0 AS bit), N'User2');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'AccessFailedCount', N'ConcurrencyStamp', N'Email', N'EmailConfirmed', N'LockoutEnabled', N'LockoutEnd', N'NormalizedEmail', N'NormalizedUserName', N'PasswordHash', N'PhoneNumber', N'PhoneNumberConfirmed', N'SecurityStamp', N'TwoFactorEnabled', N'UserName') AND [object_id] = OBJECT_ID(N'[AppDb].[AspNetUsers]'))
+    SET IDENTITY_INSERT [AppDb].[AspNetUsers] OFF;
+GO
+
+UPDATE [AppDb].[Products] SET [CreatedAt] = '2024-06-21T13:25:07.8363620Z', [Description] = N'Its a chair to sit', [Name] = N'Chair'
+WHERE [Id] = 'dc043262-673a-491a-b811-446703743743';
+SELECT @@ROWCOUNT;
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreatedAt', N'Description', N'Name', N'Price', N'Stock', N'UpdatedAt') AND [object_id] = OBJECT_ID(N'[AppDb].[Products]'))
+    SET IDENTITY_INSERT [AppDb].[Products] ON;
+INSERT INTO [AppDb].[Products] ([Id], [CreatedAt], [Description], [Name], [Price], [Stock], [UpdatedAt])
+VALUES ('dc043262-673a-491a-b811-446703743744', '2024-06-21T13:25:07.8363640Z', N'Its a table to put things on', N'Table', 200.0E0, 20, NULL),
+('dc043262-673a-491a-b811-446703743745', '2024-06-21T13:25:07.8363650Z', N'Its a sofa to sit', N'Sofa', 300.0E0, 30, NULL),
+('dc043262-673a-491a-b811-446703743746', '2024-06-21T13:25:07.8363650Z', N'Its a bed to sleep', N'Bed', 400.0E0, 40, NULL),
+('dc043262-673a-491a-b811-446703743747', '2024-06-21T13:25:07.8363650Z', N'Its a lamp to light', N'Lamp', 500.0E0, 50, NULL),
+('dc043262-673a-491a-b811-446703743748', '2024-06-21T13:25:07.8363650Z', N'Its a curtain to cover', N'Curtains', 600.0E0, 60, NULL),
+('dc043262-673a-491a-b811-446703743749', '2024-06-21T13:25:07.8363650Z', N'Its a carpet to walk', N'Carpet', 700.0E0, 70, NULL),
+('dc043262-673a-491a-b811-446703743750', '2024-06-21T13:25:07.8363660Z', N'Its a painting to see', N'Painting', 800.0E0, 80, NULL),
+('dc043262-673a-491a-b811-446703743751', '2024-06-21T13:25:07.8363660Z', N'Its a mirror to reflect', N'Mirror', 900.0E0, 90, NULL),
+('dc043262-673a-491a-b811-446703743752', '2024-06-21T13:25:07.8363660Z', N'Its a vase to hold', N'Vase', 1000.0E0, 100, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'CreatedAt', N'Description', N'Name', N'Price', N'Stock', N'UpdatedAt') AND [object_id] = OBJECT_ID(N'[AppDb].[Products]'))
+    SET IDENTITY_INSERT [AppDb].[Products] OFF;
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'RoleId', N'UserId') AND [object_id] = OBJECT_ID(N'[AppDb].[AspNetUserRoles]'))
+    SET IDENTITY_INSERT [AppDb].[AspNetUserRoles] ON;
+INSERT INTO [AppDb].[AspNetUserRoles] ([RoleId], [UserId])
+VALUES (N'dc043262-673a-491a-b811-446703743744', N'dc043262-673a-491a-b811-446703743744'),
+(N'dc043262-673a-491a-b811-446703743744', N'dc043262-673a-491a-b811-446703743745'),
+(N'dc043262-673a-491a-b811-446703743743', N'dc043262-673a-491a-b811-446703743746');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'RoleId', N'UserId') AND [object_id] = OBJECT_ID(N'[AppDb].[AspNetUserRoles]'))
+    SET IDENTITY_INSERT [AppDb].[AspNetUserRoles] OFF;
+GO
+
+INSERT INTO [AppDb].[_EFAppDbMigrationHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240621132508_addedNewDataSeed', N'8.0.6');
+GO
+
+COMMIT;
+GO
+

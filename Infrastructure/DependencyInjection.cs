@@ -19,6 +19,7 @@ namespace Infrastructure;
 public static class DependencyInjection
 {
     private const string SqlConnectionString = "SqlServerConnection";
+    private const string DbConnectionString = "DB_CONNECTION_STRING";
     
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
@@ -81,7 +82,7 @@ public static class DependencyInjection
     private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         var migrationsAssembly = typeof(AppDbContext).GetTypeInfo().Assembly.GetName().Name;
-        string? connectionString = configuration.GetConnectionString(SqlConnectionString);
+        string? connectionString = Environment.GetEnvironmentVariable(DbConnectionString) ?? configuration.GetConnectionString(SqlConnectionString);
         void ContextBuilder(DbContextOptionsBuilder b) =>
         	b.UseSqlServer(
         		connectionString,
