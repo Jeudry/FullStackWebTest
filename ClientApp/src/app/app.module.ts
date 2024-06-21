@@ -2,7 +2,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AppComponent} from "./app.component";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
-import {RouterModule} from "@angular/router";
+import {RouterLink, RouterModule} from "@angular/router";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {provideHttpClient, withInterceptors} from "@angular/common/http";
@@ -15,6 +15,10 @@ import {ProductsListComponent} from "@products/products-list/products-list.compo
 import {PublicModule} from "@public/public.module";
 import {LayoutComponent} from "./layout/layout.component";
 import {authInterceptor} from "@public/interceptors/auth-interceptor.interceptor";
+import {ErrorHandlerService} from "@core/services/error-handler-service.service";
+import {UserManagementComponent} from "./users/user-management/user-management.component";
+import {UsersListComponent} from "./users/users-list/users-list.component";
+
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -27,10 +31,13 @@ export function tokenGetter() {
     RegisterComponent,
     ProductManagementComponent,
     ProductsListComponent,
-    LayoutComponent
+    LayoutComponent,
+    UserManagementComponent,
+    UsersListComponent
   ],
   imports: [
     CommonModule,
+    RouterLink,
     PublicModule,
     RouterModule.forRoot(routes),
     SweetAlert2Module,
@@ -46,7 +53,7 @@ export function tokenGetter() {
   ],
   providers: [
     provideHttpClient(withInterceptors(
-      [authInterceptor]
+      [authInterceptor, ErrorHandlerService]
     ))
   ],
   bootstrap: [AppComponent],

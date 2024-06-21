@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AvatarModule} from "ngx-avatars";
 import {InputComponent} from "@public/components/input/input.component";
 import {HeaderComponent} from "@public/components/header/header.component";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import {HeaderComponent} from "@public/components/header/header.component";
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    AvatarModule
+    AvatarModule,
+    RouterLink,
+    RouterLinkActive
   ],
   exports: [
     MaterialModule,

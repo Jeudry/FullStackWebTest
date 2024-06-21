@@ -4,26 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FullStackDevTest.Middleware;
 
-public class ExceptionHandlingMiddleware
+public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
 {
-    private readonly RequestDelegate _next;
-    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
-    
-    public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
-    {
-        _next = next;
-        _logger = logger;
-    }
-    
     public async Task Invoke(HttpContext context)
     {
         try
         {
-            await _next(context);
+            await next(context);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Exception ocurred: {Message}", ex.Message);
+            logger.LogError(ex, "Exception ocurred: {Message}", ex.Message);
             
             var exceptionDetails = GetExceptionDetails(ex);
 
@@ -39,7 +30,6 @@ public class ExceptionHandlingMiddleware
             {
                 problemDetails.Extensions.Add("errors", exceptionDetails.Errors);
             }
-            
             
             context.Response.StatusCode = exceptionDetails.Status;
             await context.Response.WriteAsJsonAsync(problemDetails);

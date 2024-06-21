@@ -2,7 +2,10 @@
   <button aria-label="Example icon-button with menu icon" class="example-icon" mat-icon-button>
     <span class="icon-menu"></span>
   </button>
-  <span class="header-title">FullStack Test</span>
+  <span [routerLinkActive]="'active'" [routerLink]="'/home/products'" class="header-title">Products</span>
+  @if (user && user.roles[0]?.name === 'Admin') {
+    <span [routerLinkActive]="'active'" [routerLink]="'/home/users'" class="header-title">Users</span>
+  }
   <span class="example-spacer"></span>
   @if (user) {
     <ngx-avatars [name]="user.userName" (click)="menu" [matMenuTriggerFor]="menu"></ngx-avatars>

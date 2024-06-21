@@ -24,7 +24,7 @@ export class ProductManagementComponent {
   );
   description: FormControl = new FormControl(
     '',
-    [Validators.minLength(8), Validators.maxLength(1024)]
+    [Validators.minLength(5), Validators.maxLength(1024)]
   );
   price: FormControl = new FormControl(
     null,
@@ -100,8 +100,6 @@ export class ProductManagementComponent {
         Swal.fire({
           icon: 'success',
           title: 'Product created',
-          showConfirmButton: false,
-          timer: 1500
         }).then(() => {
           this.dialogRef.close(true);
         });
@@ -110,7 +108,7 @@ export class ProductManagementComponent {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          html: err
         }).then(() => {
 
         });
@@ -123,9 +121,7 @@ export class ProductManagementComponent {
       next: () => {
         Swal.fire({
           icon: 'success',
-          title: 'Product updated',
-          showConfirmButton: false,
-          timer: 1500
+          title: 'Product updated'
         }).then(() => {
           this.dialogRef.close(true);
         });
@@ -134,7 +130,7 @@ export class ProductManagementComponent {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          html: err
         }).then(() => {
 
         });

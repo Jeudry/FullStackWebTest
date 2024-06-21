@@ -1,5 +1,6 @@
 using Domain.Product;
 using Domain.User;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,22 +17,31 @@ public sealed class UserConfiguration: IEntityTypeConfiguration<User>
     {
         builder.HasKey(user => user.Id);
 
+        var user = new User
+        {
+            Id = AdminId,
+            UserName = "Admin",
+            NormalizedUserName = "ADMIN",
+            Email = "admin@example.com",
+            NormalizedEmail = "ADMIN@EXAMPLE.COM",
+            EmailConfirmed = true,
+            LockoutEnabled = false,
+            PhoneNumber = "18497505944",
+            PhoneNumberConfirmed = true,
+            TwoFactorEnabled = false,
+            LockoutEnd = null
+        };
+        
+        user.PasswordHash = PassGenerate(user);
+        
         builder.HasData(
-            new User
-            {
-                Id = AdminId,
-                UserName = "Admin",
-                NormalizedUserName = "ADMIN",
-                Email = "admin@example.com",
-                NormalizedEmail = "ADMIN@EXAMPLE.COM",
-                EmailConfirmed = true,
-                LockoutEnabled = false,
-                PhoneNumber = "18497505944",
-                PhoneNumberConfirmed = true,
-                TwoFactorEnabled = false,
-                LockoutEnd = null
-            }
+            user
         );
-
+    }
+    
+    public string PassGenerate(User user)
+    {
+        var passHash = new PasswordHasher<User>();
+        return passHash.HashPassword(user, "12345678");
     }
 }

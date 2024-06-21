@@ -88,7 +88,7 @@ export class RegisterComponent {
         console.error(err);
         Swal.fire({
           title: 'Error',
-          text: 'Register failed',
+          html: err,
           icon: "error"
         }).then(() => {
 

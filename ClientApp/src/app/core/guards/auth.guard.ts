@@ -1,14 +1,15 @@
-import {ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {Injectable} from "@angular/core";
 import {config} from "@env/config.dev";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginResponse} from "@core/interfaces/loginResponse";
 import {AuthenticateService} from "@modules/services/authentication.service";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard  {
+export class AuthGuard {
 
   apiUrl = config.apiURL;
 
@@ -16,17 +17,17 @@ export class AuthGuard  {
   }
 
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-
-    const token = localStorage.getItem("token") || '{}';
     if (this.authService.isUserAuthenticated()) {
       return true;
     }
-
-    const isRefreshSuccess = await this.tryRefreshingTokens(token);
-    if (!isRefreshSuccess) {
-      this.router.navigate([''], {queryParams: {returnUrl: state.url}});
-    }
-    return isRefreshSuccess;
+    Swal.fire({
+      icon: 'error',
+      title: 'Access Denied',
+      html: 'You need to login to access this page',
+    }).then(() => {
+      this.router.navigate(['login'], {queryParams: {returnUrl: state.url}});
+    })
+    return false;
   }
 
   private async tryRefreshingTokens(token: string): Promise<boolean> {

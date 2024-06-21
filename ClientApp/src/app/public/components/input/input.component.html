@@ -8,11 +8,19 @@
              [attr.disabled]="disabled ? true : null" [formControl]="formControl"
              [ngClass]="isTouched && errorMessage ? 'c-form-group__text-danger' : 'c-form-group__text'"
              [placeholder]="placeholder" [type]="type" matInput>
-    } @else {
+    }
+    @if (inputType === InputType.TextArea) {
       <textarea (input)="onInputFunc()"
                 [attr.disabled]="disabled ? true : null" [formControl]="formControl"
                 [ngClass]="isTouched && errorMessage ? 'c-form-group__text-danger' : 'c-form-group__text'"
                 [placeholder]="placeholder" [type]="type" matInput></textarea>
+    }
+    @if (inputType === InputType.Select) {
+      <mat-select [formControl]="formControl" [placeholder]="placeholder">
+        <mat-option *ngFor="let option of selectOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
     }
     <mat-error *ngIf="isTouched && errorMessage" class="c-form-group__error">{{ errorMessage }}</mat-error>
   </mat-form-field>

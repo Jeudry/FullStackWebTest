@@ -1,5 +1,6 @@
 using Application;
 using FullStackDevTest;
+using FullStackDevTest.extensions;
 using FullStackDevTest.Middleware;
 using Infrastructure;
 using Serilog;
@@ -32,18 +33,18 @@ var app = builder.Build();
 app.UseRouting();
 AddOrigins(app, builder.Configuration);
 
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();   
     app.UseSwaggerUI();
 }
+
 app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
-app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseErrorHandlingMiddleWare();
 app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 

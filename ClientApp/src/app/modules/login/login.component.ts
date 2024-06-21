@@ -65,15 +65,15 @@ export class LoginComponent {
           localStorage.setItem("token", res.token!);
           localStorage.setItem('expiration', res.expiration!);
           this.authService.sendAuthStateChangeNotification(res.isAuthSuccessful);
-          this.router.navigate(['home']);
+          this.router.navigate(['home/products']);
         });
       },
       error: (err) => {
         console.error(err);
         Swal.fire({
-          title: 'Success',
-          text: 'Login Success',
-          icon: "error"
+          title: 'Login Failed',
+          html: err !== "" ? err : "Something went wrong!",
+          icon: 'error'
         }).then(() => {
 
         });

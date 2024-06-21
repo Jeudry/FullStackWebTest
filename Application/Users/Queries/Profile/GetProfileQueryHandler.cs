@@ -3,6 +3,7 @@ using Application.Users.response;
 using Domain.User;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Triplex.Validations;
 
@@ -19,6 +20,8 @@ internal sealed class GetProfileQueryHandler(IUserRepository userRepository)
         
         if (user == null) return Error.NotFound("User not found.");
         
-        return new UserResponse(user.UserName!, user.Email!);
+        List<IdentityRole> roles = await userRepository.GetUserRolesAsync(user);
+        
+        return new UserResponse(id: user.Id, user.UserName!, user.Email!, roles.Select(role => new RoleResponse(role.Id, role.Name!)).ToList());
     }
 }

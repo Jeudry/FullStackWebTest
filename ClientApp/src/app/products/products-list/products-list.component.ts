@@ -55,31 +55,22 @@ export class ProductsListComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.productsService.createProduct(result).subscribe({
-          next: () => {
-            Swal.fire({
-              icon: 'success',
-              title: 'Product created',
-              showConfirmButton: false,
-              timer: 1500
-            }).then(() => {
-              this.search.next('');
-            });
-          }, error: (err) => {
-            console.error(err);
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-            }).then(() => {
-
-            });
-          }
-        });
+        this.search.next('');
       }
     });
   }
 
+  updateProduct(id: string) {
+    const dialogRef = this.dialog.open(ProductManagementComponent, {
+      data: {id: id},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.search.next('');
+      }
+    });
+  }
 
   deleteProduct(id: number) {
     this.productsService.deleteProduct(id).subscribe({
@@ -87,7 +78,6 @@ export class ProductsListComponent implements AfterViewInit {
         Swal.fire({
           icon: 'success',
           title: 'Product deleted',
-          showConfirmButton: false,
           timer: 1500
         }).then(() => {
           this.search.next('');
@@ -98,7 +88,7 @@ export class ProductsListComponent implements AfterViewInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          html: err
         }).then(() => {
 
         });
@@ -120,7 +110,7 @@ export class ProductsListComponent implements AfterViewInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Something went wrong!',
+        html: err
       }).then(() => {
 
       });

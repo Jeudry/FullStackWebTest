@@ -4,6 +4,7 @@ using ErrorOr;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
+using ValidationException = Application.Exceptions.ValidationException;
 
 namespace Application.Behaviors;
 
@@ -36,7 +37,7 @@ public class ValidationBehavior<TRequest, TResponse>(IValidator<TRequest>? valid
             .ConvertAll(error => Error.Validation(
                 code: error.PropertyName,
                 description: error.ErrorMessage));
-
+        
         return (dynamic)errors;
     }   
 }

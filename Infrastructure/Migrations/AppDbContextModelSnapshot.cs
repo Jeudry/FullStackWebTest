@@ -61,7 +61,7 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("dc043262-673a-491a-b811-446703743743"),
-                            CreatedAt = new DateTime(2024, 6, 20, 23, 33, 46, 218, DateTimeKind.Utc).AddTicks(5790),
+                            CreatedAt = new DateTime(2024, 6, 21, 2, 45, 49, 644, DateTimeKind.Utc).AddTicks(9300),
                             Description = "Product description",
                             Name = "Product",
                             Price = 100.0,
@@ -138,15 +138,16 @@ namespace Infrastructure.Migrations
                         {
                             Id = "dc043262-673a-491a-b811-446703743743",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "12714d0c-ba6e-4315-b6be-9a30c3789f26",
+                            ConcurrencyStamp = "36890ad1-6eae-467e-b655-fbc0e3fe6b1d",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMlcIVlkUIpOBhTIphdRyJ9HcNZ818W7S97CIxi6Mnt+Yo++Ys6MlJn49JCd67Wkdg==",
                             PhoneNumber = "18497505944",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "4c5a42e4-fe87-4f10-8441-501090657e2c",
+                            SecurityStamp = "6f8de872-4347-4e0a-a096-acf96a7e439d",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -278,6 +279,13 @@ namespace Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", "AppDb");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "dc043262-673a-491a-b811-446703743743",
+                            RoleId = "dc043262-673a-491a-b811-446703743743"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

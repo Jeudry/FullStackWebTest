@@ -14,6 +14,7 @@ export const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
 export enum InputType {
   Field = 'text',
   TextArea = 'textarea',
+  Select = 'select'
 }
 
 @Component({
@@ -29,6 +30,7 @@ export enum InputType {
 })
 export class InputComponent {
   @Input() inputType: InputType = InputType.Field;
+  @Input() selectOptions: { value: string, label: string }[] = [];
   @Input() type: string = '';
   @Input() placeholder: string = '';
   @Input() formControl: FormControl = new FormControl();

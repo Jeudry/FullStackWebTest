@@ -24,7 +24,7 @@ export class LayoutComponent {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          html: error
         }).then(() => {
 
         });
