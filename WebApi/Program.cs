@@ -9,6 +9,7 @@ using Serilog;
 
 const string OriginsKey = "Origins";
 const string AllowOriginKey = "AllowOrigin";
+const string ApplyMigrationsKey = "ApplyMigrations";
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,7 @@ builder.Services.AddCors(
                     .SetIsOriginAllowed(origin => true)
         )
 );
+var applyMigrations = builder.Configuration[ApplyMigrationsKey];
 
 
 var app = builder.Build();
@@ -48,9 +50,13 @@ app.UseAuthorization();
 app.UseHttpsRedirection();
 app.UseErrorHandlingMiddleWare();
 app.UseEndpoints(endpoints => endpoints.MapControllers());
-using var serviceScope = app.Services.CreateScope();
-using var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-context.Database.Migrate();
+
+if (applyMigrations == "true")
+{
+    using var serviceScope = app.Services.CreateScope();
+    using var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+    context.Database.Migrate();
+}
 
 
 app.Run();

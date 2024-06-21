@@ -18,8 +18,10 @@
   client-app:
     image: angular-test
     build:
-      context: .
-      dockerfile: ClientApp/Dockerfile
+      context: ./ClientApp
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
 
 volumes:
   webapi:
