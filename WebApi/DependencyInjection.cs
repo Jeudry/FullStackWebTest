@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 
@@ -70,6 +71,9 @@ public static class DependencyInjection
                     }
                 }
             );
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
 
             var securityScheme = new OpenApiSecurityScheme
             {

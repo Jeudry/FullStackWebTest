@@ -37,4 +37,8 @@
       <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.6.2" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
 </Project>

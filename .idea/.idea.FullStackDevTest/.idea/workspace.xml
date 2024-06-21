@@ -8,10 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92c7b8c5-a381-45ba-95d5-46ef8ab8c9cc" name="Changes" comment="">
+    <list default="true" id="92c7b8c5-a381-45ba-95d5-46ef8ab8c9cc" name="Changes" comment="fixed create users">
+      <change afterPath="$PROJECT_DIR$/script.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullStackDevTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullStackDevTest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Users/Commands/Create/CreateUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Users/Commands/Create/CreateUserCommandHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +38,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fcbf4f8a5ab54375abcfa46e8f5896b536c00/e8/f34fa4dc/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1234fa5ebe59ed29bd342e7ab68aa7842dec7227cc1656150ccf2f6d2f7ab/SqlConnection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8acdf168f2b89aa5435664ff09ee624d461ef7161ea24f748d3bfc6963599fc/XunitException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/sargon/RiderProjects/FullStackDevTest/Application/Users/Commands/Create/CreateUserCommandHandler.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -182,7 +182,7 @@
       <workItem from="1718880075101" duration="25027000" />
       <workItem from="1718917394795" duration="9599000" />
       <workItem from="1718933695661" duration="5781000" />
-      <workItem from="1718967538210" duration="6649000" />
+      <workItem from="1718967538210" duration="7293000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -424,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718890755990</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fixed create users">
+      <option name="closed" value="true" />
+      <created>1718974381088</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1718974381088</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +454,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added product validator and repository methjods" />
     <MESSAGE value="create product endpoint" />
     <MESSAGE value="added middleware to handle errors" />
     <MESSAGE value="added Db configuration" />
@@ -471,6 +478,7 @@
     <MESSAGE value="Added login" />
     <MESSAGE value="Finished get user" />
     <MESSAGE value="finished backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished backend" />
+    <MESSAGE value="fixed create users" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed create users" />
   </component>
 </project>
