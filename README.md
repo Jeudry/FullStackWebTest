@@ -3,18 +3,14 @@
 This is a Web project to test my fullstack capabilities.
 
 ## Table of Contents
-- [.Net Related Stuff](#net)
-- [Authenticating to Github Packages](#authenticating)
-- [Preparing Environment to Run Polux BPM The First Time](#preparing)
-- [Automated Testing](#testing)
-- [Developer Testing](#dev-testing)
-- [Install Entity Framework Tools on Linux](#ef-tools)
-- [NoSql Startup](#nosql-startup)
-- [Adding new features](#new-features)
-- [Project management tool Integrations](#integrations)
-- [Build docker files for deployables](#docker-build)
+- [Tecnologies](#tecnologies)
+- [Setup of the Project](#setup)
+- [Using Docker](#docker)
+- [Local Setup](#local)
+- [Developer Testing](#testing)
+- [Use of the system](#use)
 
-## Tecnologies used <a name="Tecnologies used"></a>
+## Tecnologies used <a name="tecnologies"></a>
 
 * ASP.NET Core 8.0
 * Entity Framework Core
@@ -52,7 +48,7 @@ This will initialize the frontend, the backend and the database.
 5. Open in the browser the port
 
 ```sh
-client-app.fullstackdevtest.orb.local
+https://client-app.fullstackdevtest.orb.local
 ```
 
 ## Preparing Environment to Run Local<a name="local"></a>
