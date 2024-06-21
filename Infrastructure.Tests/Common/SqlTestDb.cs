@@ -1,16 +1,32 @@
 using Infrastructure.Persistence;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Tests.Common;
 
 public class SqlTestDb: IDisposable
 {
+
+    private const string ConnectionStrings = "ConnectionStrings";
+    private const string SqlConnectionString = "SqlServerConnection";
+    private const string DbConnectionString = "DB_CONNECTION_STRING";
+    
     public SqlConnection Connection { get; }
     
     public static SqlTestDb CreateAndInitialize()
     {
-        var testDatabase = new SqlTestDb("Data Source=.; Initial Catalog=FullStackDb; User=sa; Password=Wepsys@123; ApplicationIntent=ReadWrite; MultiSubnetFailover=False; Trusted_Connection=False; Encrypt=True; TrustServerCertificate=True; Connection Timeout=30;");
+        
+        IConfiguration configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+        var connectionString =
+            configuration.GetSection(ConnectionStrings)[SqlConnectionString];
+        
+        configuration["ApplyMigrations"] = "false"; 
+
+        var testDatabase = new SqlTestDb(connectionString);
 
         testDatabase.InitializeDatabase();
 
@@ -19,10 +35,11 @@ public class SqlTestDb: IDisposable
     
     public void InitializeDatabase()
     {
-        Connection.Open();
+         Connection.Open();
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase(Connection.ConnectionString)
             .Options;
+        
 
         using var context = new AppDbContext(options, null!, null!);
         context.Database.EnsureDeleted();

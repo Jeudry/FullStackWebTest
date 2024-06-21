@@ -5,8 +5,8 @@ internal static partial class Constants
     
     public static class Product
     {
-        public const string Text = "Chair";
-        public const string Description = "A chair to sit";
+        public const string Text = "Fang";
+        public const string Description = "A fang to bite";
         public const double Price = 100.0;
         public const int Stock = 10;
         public static readonly Guid Id = Guid.NewGuid();
