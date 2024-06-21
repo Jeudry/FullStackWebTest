@@ -28,14 +28,14 @@ internal sealed class CreateUserCommandHandler(IUserRepository userRepository, U
         
         await userManager.CreateAsync(user, request.Password);
         
-        List<IdentityRole?> roles = request.RolesId.Select(roleId => roleManager.FindByIdAsync(roleId).Result).ToList();
+        var role = roleManager.Roles.FirstOrDefault(r => r.Id == request.RolesId[0]);
         
-        if (roles is null)
+        if (role is null)
         {
             return Error.NotFound(description: "Role not found");
         }
 
-        roles.ForEach(role => userManager.AddToRoleAsync(user, role!.Name!));
+        await userManager.AddToRoleAsync(user, role.Name!);
         
         await userRepository.SaveChangesAsync(cancellationToken);
 

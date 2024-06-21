@@ -9,80 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92c7b8c5-a381-45ba-95d5-46ef8ab8c9cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Application/Users/Commands/Create/CreateUserCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Commands/Create/CreateUserCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Commands/Create/CreateUserCommandValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Commands/Update/UpdateUserCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Commands/Update/UpdateUserCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Commands/Update/UpdateUserCommandValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Events/Delete/Delete/DeleteUserCommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Events/Delete/Delete/DeleteUserEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Queries/GetProducts/GetUsersQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Queries/GetProducts/GetUsersQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Queries/GetRoles/GetRolesQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Queries/GetRoles/GetRolesQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Queries/GetUser/GetUserQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/Queries/GetUser/GetUserQueryHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Users/response/RoleResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/RoleResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/userDto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/core/services/error-handler-service.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/core/services/error-handler-service.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/user-management/user-management.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/user-management/user-management.component.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/user-management/user-management.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/user-management/user-management.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/users-list/users-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/users-list/users-list.component.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/users-list/users-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/app/users/users-list/users-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/components/_cloader.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Configuration/UserRolesConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621022323_user seed.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621022323_user seed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621022728_UserRolesAdded.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621022728_UserRolesAdded.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621022827_removed one role data seed.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621022827_removed one role data seed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621024549_trying to seed user roles.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Migrations/20240621024549_trying to seed user roles.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Presentation/Users/CreateUserRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Presentation/Users/UpdateUserRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/Controllers/ApiController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/extensions/AppExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FullStackDevTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FullStackDevTest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Behaviors/ValidationBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Behaviors/ValidationBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Common/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Common/Interfaces/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Products/Commands/Update/UpdateProductCommandValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Users/Queries/Profile/GetProfileQueryHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Users/Queries/Profile/GetProfileQueryHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Users/response/UserResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Users/response/UserResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/core/guards/admin.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/core/guards/admin.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/core/guards/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/core/guards/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/registerDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/registerDto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/userResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/core/interfaces/userResponse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/modules/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/modules/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/modules/services/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/modules/services/authentication.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/product-management/product-management.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/products/products-list/products-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/components/input/input.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/app/public/public.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/app/public/public.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/assets/sass/_main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/_main.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/src/assets/sass/components/_header.sass" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/src/assets/sass/components/_header.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Configuration/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configuration/UserConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Persistence/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Persistence/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Users/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Users/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/ProductsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/ProductsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Middleware/ExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Middleware/ExceptionHandlingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Users/Commands/Create/CreateUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Users/Commands/Create/CreateUserCommandHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +182,7 @@
       <workItem from="1718880075101" duration="25027000" />
       <workItem from="1718917394795" duration="9599000" />
       <workItem from="1718933695661" duration="5781000" />
-      <workItem from="1718967538210" duration="5855000" />
+      <workItem from="1718967538210" duration="6649000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />

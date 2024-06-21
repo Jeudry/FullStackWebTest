@@ -44,7 +44,7 @@ public class UpdateProductCommandTest(WebAppFactory webAppFactory)
             DateTime.Now,
             DateTime.Now,
             createProductCommand.Description,
-            createProductCommand.Id
+            Guid.NewGuid()
             );
         
         var result = await _mediator.Send(productUpdateCommand);
