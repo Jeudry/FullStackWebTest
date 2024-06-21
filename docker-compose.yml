@@ -1,6 +1,27 @@
 ﻿services:
-  fullstackdevtest:
-    image: fullstackdevtest
+  webapi:
+    image: webapi
     build:
       context: .
-      dockerfile: FullStackDevTest/Dockerfile
+      dockerfile: WebApi/Dockerfile
+      
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "fullstack@123"
+    ports:
+      - "1434:1434"
+    volumes:
+      - "sqlserver:/var/opt/mssql"
+    
+  client-app:
+    image: angular-test
+    build:
+      context: .
+      dockerfile: ClientApp/Dockerfile
+
+volumes:
+  webapi:
+  sqlserver: 
+  client-app:

@@ -1,0 +1,58 @@
+@use '../abstracts' as a
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  height: 100vh
+  background-color: #f4f7fa
+
+
+input, button, textarea, select
+  outline: 0
+  font: inherit
+  border: none
+
+.form-floating
+  label
+    @include a.text()
+
+    &:after
+      background: inherit !important
+
+a
+  text-decoration: none !important
+  color: unset !important
+  transition: all 300ms ease-in-out
+
+.a-link
+  color: blue !important
+  transition: all 300ms ease-in-out
+  cursor: pointer
+
+  &:hover
+    text-decoration: underline !important
+
+button
+  background: transparent
+  border: none
+  cursor: pointer
+
+h1, h2, h3, h4, h5, h6, p
+  overflow-wrap: break-word
+
+img, object, embed, video
+  max-width: 100%
+
+img
+  width: 100%
+  height: 100%
+
+img, picture, video, canvas, svg
+  max-width: 100%
+  display: block
+
+.mat-mdc-select-arrow svg
+  max-width: unset

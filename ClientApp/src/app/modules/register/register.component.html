@@ -1,0 +1,30 @@
+<div class="auth">
+  <mat-card class="auth__card">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="registerForm">
+        <div class="auth__form">
+          <app-input [formControl]="userName" [placeholder]="'Username'"></app-input>
+          <app-input [formControl]="email" [placeholder]="'Email'" [type]="'email'"></app-input>
+          <app-input (onInput)="passwordValidation()" [formControl]="password" [onInputEmit]="true"
+                     [placeholder]="'Password'"
+                     [type]="'password'"></app-input>
+          <app-input (onInput)="passwordValidation()" [formControl]="confirmPassword" [onInputEmit]="true"
+                     [placeholder]="'Confirm password'"
+                     [type]="'password'"></app-input>
+          <div class="auth__form__c-btn">
+            <button (click)="onSubmit()" mat-raised-button
+                    type="submit">Login
+            </button>
+            <button (click)="onRegister(registerForm.value)" [disabled]="!registerForm.valid" color="primary"
+                    mat-raised-button
+                    type="submit">Register
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

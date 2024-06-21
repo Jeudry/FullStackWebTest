@@ -1,0 +1,24 @@
+<div class="management">
+  <h2 class="management__title" mat-dialog-title>{{ title }}</h2>
+  <mat-dialog-content>
+    <form [formGroup]="managementForm">
+      <div class="management__form">
+        <div class="col">
+          <app-input [formControl]="name" [placeholder]="'Name'"></app-input>
+          <app-input [formControl]="description" [inputType]="textArea" [placeholder]="'Description'"></app-input>
+        </div>
+        <div class="col">
+          <app-input [formControl]="price" [placeholder]="'Price'" [type]="'number'"></app-input>
+          <app-input [formControl]="stock" [placeholder]="'Stock'" [type]="'number'"></app-input>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions class="management__actions">
+    <button (click)="onClose()" mat-raised-button>Close</button>
+    <button (click)="onSubmit(managementForm.value)" [disabled]="!managementForm.valid" cdkFocusInitial color="primary"
+            mat-raised-button>
+      Submit
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,68 @@
+<div class="management-list mat-elevation-z8">
+  <div class="management-list__header">
+    <div class="management-list__header__left">
+      <h2>Products</h2>
+      <button (click)="createUser()" color="primary" mat-raised-button>Create
+        User
+      </button>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <input (input)="applyFilter($event.target)" matInput placeholder="Filter">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="example-container">
+    @if (isLoadingResults) {
+      <div class="example-loading-shade">
+        <mat-spinner></mat-spinner>
+      </div>
+    }
+    <table [dataSource]="data$" class="example-table" mat-table
+           matSort matSortActive="createdAt" matSortDirection="desc" matSortDisableClear>
+      <ng-container matColumnDef="userName">
+        <th *matHeaderCellDef mat-header-cell>UserName</th>
+        <td *matCellDef="let row" mat-cell>{{ row.userName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th *matHeaderCellDef mat-header-cell>Email</th>
+        <td *matCellDef="let row" mat-cell>{{ row.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th *matHeaderCellDef mat-header-cell>Role</th>
+        <td *matCellDef="let row" mat-cell>{{ row.role }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef disableClear mat-header-cell>
+          Actions
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          <button [matMenuTriggerFor]="menu" color="primary"
+                  mat-icon-button>
+            <span class="icon-dots"></span>
+          </button>
+          <mat-menu #menu="matMenu">
+            <div class="mat-menu">
+              <div (click)="updateUser(row.id)" class="mat-menu-item">
+                <span class="icon-edit"></span>
+                <span class="mat-menu__username"> Edit User</span>
+              </div>
+              <div (click)="deleteUser(row.id)" class="mat-menu-item">
+                <span class="icon-user"></span>
+                <span class="mat-menu__email"> Delete User </span>
+              </div>
+            </div>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns; " mat-row></tr>
+    </table>
+  </div>
+  <mat-paginator [length]="resultsLength" [pageSize]="10"
+                 aria-label="Select page of GitHub search results"></mat-paginator>
+</div>

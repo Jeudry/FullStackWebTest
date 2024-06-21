@@ -1,0 +1,29 @@
+<mat-toolbar>
+  <button aria-label="Example icon-button with menu icon" class="example-icon" mat-icon-button>
+    <span class="icon-menu"></span>
+  </button>
+  <span [routerLinkActive]="'active'" [routerLink]="'/home/products'" class="header-title">Products</span>
+  @if (user && user.roles[0].name === 'Admin') {
+    <span [routerLinkActive]="'active'" [routerLink]="'/home/users'" class="header-title">Users</span>
+  }
+  <span class="example-spacer"></span>
+  @if (user) {
+    <ngx-avatars [name]="user.userName" (click)="menu" [matMenuTriggerFor]="menu"></ngx-avatars>
+    <mat-menu #menu="matMenu">
+      <div class="mat-menu">
+        <div class="mat-menu-item">
+          <span class="icon-email"></span>
+          <span class="mat-menu__username">{{ user.userName }}</span>
+        </div>
+        <div class="mat-menu-item">
+          <span class="icon-user"></span>
+          <span class="mat-menu__email">{{ user.email }}</span>
+        </div>
+        <div (click)="logout()" class="logout">
+          <span class="icon-logout"></span>
+          <span>Logout</span>
+        </div>
+      </div>
+    </mat-menu>
+  }
+</mat-toolbar>

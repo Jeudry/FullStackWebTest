@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  webapi:
+    build:
+      context: "/Users/sargon/RiderProjects/FullStackDevTest"
+      dockerfile: "WebApi/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/WebApi.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "webapi:dev"
+    ports: []
+    volumes:
+    - "/Users/sargon/.nuget/packages:/home/app/.nuget/packages"
+    - "/Users/sargon/RiderProjects/FullStackDevTest/WebApi:/app:rw"
+    - "/Users/sargon/RiderProjects/FullStackDevTest:/src:rw"
+    working_dir: "/app"

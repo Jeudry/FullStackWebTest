@@ -1,0 +1,28 @@
+@use '../abstracts/variables' as *
+
+.auth
+  position: fixed
+  display: grid
+  height: 100%
+  width: 100%
+  justify-content: center
+  align-items: center
+  background: url("../../../assets/img/login-bg.png")
+
+  &__form
+    display: grid
+    gap: 2rem
+
+    &__c-btn
+      display: flex
+      justify-content: space-between
+      align-items: center
+      gap: 1rem
+      
+  &__card
+    display: grid !important
+    grid-template-rows: auto 1fr
+    gap: 2rem
+    background-color: $white !important
+    padding: 2rem
+    border-radius: 1.5rem !important
